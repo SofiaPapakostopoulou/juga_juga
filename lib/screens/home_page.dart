@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
 
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Image.asset('images/shot.png'),
+          Image.asset('profile_image/shot.png'),
           SizedBox(height: 40),
           TextButton(
               style: TextButton.styleFrom(
@@ -45,6 +45,13 @@ class _HomePageState extends State<HomePage> {
                   fontFamily: 'Fredericka the Great',
                   fontSize: 50.0))
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //Donation Button
+              //Rating Button
+            ],
+          )
         ],
       ),
     );
