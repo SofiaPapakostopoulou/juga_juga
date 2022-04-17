@@ -14,7 +14,7 @@ class JJ extends StatefulWidget {
 
 class _JJState extends State<JJ> {
 
-  int numberOfPlayers = 0;
+  int NumberOfPlayers = 0;
   int selectedButton = 0;
 
   @override
@@ -36,7 +36,7 @@ class _JJState extends State<JJ> {
                     style: TextStyle(
                     fontFamily: 'Fredericka the Great',
                     fontSize: 20.0)),
-                  Text(numberOfPlayers.toString(),
+                  Text(NumberOfPlayers.toString(),
                       style: TextStyle(
                           fontFamily: 'Fredericka the Great',
                           fontSize: 20.0)),
@@ -47,8 +47,8 @@ class _JJState extends State<JJ> {
                         icon: FontAwesomeIcons.minus,
                         onPressed: () {
                           setState(() {
-                            if(numberOfPlayers>0){
-                              numberOfPlayers--;
+                            if(NumberOfPlayers>0){
+                              NumberOfPlayers--;
                             }
                             });
                           },
@@ -58,7 +58,7 @@ class _JJState extends State<JJ> {
                         icon: FontAwesomeIcons.plus,
                         onPressed: () {
                         setState(() {
-                          numberOfPlayers++;
+                          NumberOfPlayers++;
                         });
                         })
                 ],),
@@ -124,7 +124,8 @@ class _JJState extends State<JJ> {
                   // foreground
                 ),
                 onPressed: (){
-                  GameBrain().setNumberOfPlayers(numberOfPlayers);
+                  GameBrain().setNumberOfPlayers(NumberOfPlayers);
+                  print(GameBrain().getnumberOfPlayers());
                   GameBrain().setNumberOfStacks(selectedButton);
                   Navigator.pushNamed(context, '/JJGame');
                 },
