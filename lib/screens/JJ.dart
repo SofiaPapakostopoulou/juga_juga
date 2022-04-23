@@ -5,6 +5,7 @@ import 'package:juga_juga/components/round_icon_button.dart';
 import 'package:group_button/group_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:juga_juga/components/GameBrain.dart';
+import 'package:juga_juga/screens/JJGame.dart';
 
 class JJ extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class JJ extends StatefulWidget {
 
 class _JJState extends State<JJ> {
 
+  GameBrain numbers = GameBrain();
   int NumberOfPlayers = 0;
   int selectedButton = 0;
 
@@ -124,10 +126,14 @@ class _JJState extends State<JJ> {
                   // foreground
                 ),
                 onPressed: (){
-                  GameBrain().setNumberOfPlayers(NumberOfPlayers);
-                  print(GameBrain().getnumberOfPlayers());
-                  GameBrain().setNumberOfStacks(selectedButton);
-                  Navigator.pushNamed(context, '/JJGame');
+                  numbers.setNumberOfPlayers(NumberOfPlayers);
+                  //print(numbers.getnumberOfPlayers());
+                  numbers.setNumberOfStacks(selectedButton+1);
+                  //print(numbers.getnumberOfStacks());
+                  //Navigator.pushNamed(context, '/JJGame');
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder:(context)=>
+                          new JJGame(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks())));
                 },
                 child: Text(AppLocalizations.of(context)!.letsGoButton)
             ),

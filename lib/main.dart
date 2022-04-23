@@ -30,7 +30,7 @@ class JugaJuga extends StatelessWidget {
         //'/': (context) => HomePage(),
         '/JJ': (context) => JJ(),
         '/JJWild': (context) => JJWild(),
-        '/JJGame': (context) => JJGame(),
+        '/JJGame': (context) => JJGame(0,0),
         '/Settings': (context) => Settings(),
       },
       theme: ThemeData.dark().copyWith(

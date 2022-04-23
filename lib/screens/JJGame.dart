@@ -72,15 +72,29 @@ const _images = [
 
 
 class JJGame extends StatefulWidget {
+
+  final int numberOfPlayers;
+  final int numberOfStacks;
+  JJGame(this.numberOfPlayers,this.numberOfStacks);
+  //JJGame(this.numberOfPlayers,this.numberOfStacks, {required Key key}): super(key: key);
+
+  // @override
+  // _JJGameState createState() => _JJGameState();
   @override
-  _JJGameState createState() => _JJGameState();
+  State<StatefulWidget> createState() { return new _JJGameState();}
 }
 
 class _JJGameState extends State<JJGame> {
   List<PlayingCard> deck = CardMaker().getCards();
   List<int> lista = CardMaker().IndexMaker();
+  //GameBrain numbers;
   int indexer = 0;
   int shotCounter = 0;
+
+  //int numberOfPlayers = widget.numberOfPlayers;
+  //int numberOfStacks = 0;
+  // _JJGameState(this.numberOfPlayers,this.numberOfStacks);
+
 
   // bool isBack = true;
   // double angle = 0;
@@ -95,6 +109,8 @@ class _JJGameState extends State<JJGame> {
   //     angle = (angle + pi) % (2 * pi);
   //   });
   // }
+
+
 
   late final SwipableStackController _controller;
 
@@ -145,29 +161,36 @@ class _JJGameState extends State<JJGame> {
                       stackClipBehaviour: Clip.none,
                       onSwipeCompleted: (index, direction) {
                         if(direction==SwipeDirection.left){
-                          print(indexer);
-                          print(GameBrain().getnumberOfPlayers());
-                          if(indexer<GameBrain().numberOfPlayers){
-                            AlertDialog(
-                              title: Text(AppLocalizations.of(context)!.playerNo
-                                  + indexer.toString() + AppLocalizations.of(context)!.youDrink
-                                  + shotCounter.toString() + AppLocalizations.of(context)!.shots),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context, 'Ok'),
-                                  child: const Text('Ok'),
-                                )
-                              ],
-                              elevation: 24.0,
-                              backgroundColor: Colors.grey[300],
-                              shape: CircleBorder(),
+                          // print("indexer $indexer");
+                          // print(widget.numberOfPlayers);
+                          // print("shotcounteeer: $shotCounter");
+                          if(indexer+1<=widget.numberOfPlayers){
+                            //if(indexer==0){indexer++;}
+                            int shots = shotCounter;
+                            showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Text(AppLocalizations.of(context)!.playerNo
+                                           + (indexer).toString() + " " + AppLocalizations.of(context)!.youDrink + " "
+                                    + shots.toString() + " " + AppLocalizations.of(context)!.shots),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context, 'OK'),
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              ),
                             );
                             shotCounter=0;
-                            print(shotCounter);
-                            indexer++;}
-                        }else{
+                            if((indexer+1)==widget.numberOfPlayers){
+                              indexer=0;}
+                            else{
+                              indexer++;}
+                            }
+                        }
+                        else if(direction==SwipeDirection.right){
                           shotCounter++;
-                          print(shotCounter);
+                          //print("shotcounter: $shotCounter");
                         }
 
                       },

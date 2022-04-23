@@ -89,7 +89,7 @@ class CardMaker {
   }
 
   List<int> IndexMaker(){
-    List<int> list_a = Iterable<int>.generate(53).toList();
+    List<int> list_a = Iterable<int>.generate(52).toList();
     list_a.shuffle();
     print(list_a);
     return list_a;
