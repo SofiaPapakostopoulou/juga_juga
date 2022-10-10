@@ -90,6 +90,7 @@ class _JJGameState extends State<JJGame> {
   //GameBrain numbers;
   int indexer = 0;
   int shotCounter = 0;
+  bool flag = false;
 
   //int numberOfPlayers = widget.numberOfPlayers;
   //int numberOfStacks = 0;
@@ -162,10 +163,10 @@ class _JJGameState extends State<JJGame> {
                       onSwipeCompleted: (index, direction) {
                         if(direction==SwipeDirection.left){
                           // print("indexer $indexer");
-                          // print(widget.numberOfPlayers);
+                          print(widget.numberOfPlayers);
                           // print("shotcounteeer: $shotCounter");
                           if(indexer+1<=widget.numberOfPlayers){
-                            //if(indexer==0){indexer++;}
+                            if(flag==true){indexer=widget.numberOfPlayers;}
                             int shots = shotCounter;
                             showDialog<String>(
                               context: context,
@@ -181,8 +182,10 @@ class _JJGameState extends State<JJGame> {
                                 ],
                               ),
                             );
+                            if(flag){indexer=0;flag=false;}
                             shotCounter=0;
                             if((indexer+1)==widget.numberOfPlayers){
+                              flag=true;
                               indexer=0;}
                             else{
                               indexer++;}
