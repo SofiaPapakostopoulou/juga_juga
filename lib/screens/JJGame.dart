@@ -159,6 +159,7 @@ class _JJGameState extends State<JJGame> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           SizedBox(height: 50.0),
+          SizedBox(),
           // Text(
           //     AppLocalizations.of(context)!.playerNo +
           //         (indexer + 1).toString() +
