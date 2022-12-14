@@ -17,8 +17,6 @@ import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:swipe_deck/swipe_deck.dart';
-const IMAGES = ["2_of_clubs", "3_of_clubs"];
 
 const _images = [
   'playing_cards/ace_of_clubs.png',
@@ -94,7 +92,6 @@ class JJGame extends StatefulWidget {
 class _JJGameState extends State<JJGame> {
   List<PlayingCard> deck = CardMaker().getCards();
   List<int> lista = CardMaker().IndexMaker();
-  //List<int> listaHalf = CardMaker().IndexMaker();
   int indexer = 0;
   int shotCounter = 0;
   bool flag = false;
@@ -133,13 +130,13 @@ class _JJGameState extends State<JJGame> {
       builder: (BuildContext context) => AlertDialog(
         title: Text(text,
             style:
-                TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
+            TextStyle(fontFamily: 'Fredericka the Great', fontSize: 20.0)),
         actions: <Widget>[
           TextButton(
             style: TextButton.styleFrom(
               primary: Colors.white,
               textStyle: const TextStyle(
-                  fontFamily: 'Source Code Pro', fontSize: 20),
+                  fontFamily: 'Fredericka the Great', fontSize: 20),
               backgroundColor: Colors.deepPurple[150],
             ),
             onPressed: () => Navigator.pop(context, 'OK'),
@@ -158,7 +155,7 @@ class _JJGameState extends State<JJGame> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 50.0),
+          SizedBox(height: 100.0),
           // Text(
           //     AppLocalizations.of(context)!.playerNo +
           //         (indexer + 1).toString() +
@@ -166,86 +163,11 @@ class _JJGameState extends State<JJGame> {
           //     style: TextStyle(fontFamily: 'Fredericka the Great', fontSize: 35.0)),
           Text(widget.PlayerList[indexer].name + ',',
               style: TextStyle(
-                  fontFamily: 'Source Code Pro', fontSize: 35.0)),
+                  fontFamily: 'Fredericka the Great', fontSize: 35.0)),
 
-          // Text(AppLocalizations.of(context)!.playerChoose,
-          //     style: TextStyle(
-          //         fontFamily: 'Fredericka the Great', fontSize: 30.0)),
-          Wrap(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  textStyle: const TextStyle(
-                      fontFamily: 'Source Code Pro', fontSize: 30),
-                  backgroundColor: Colors.deepPurple[150],
-                ),
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: Text(AppLocalizations.of(context)!.black + ","),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  textStyle: const TextStyle(
-                      fontFamily: 'Source Code Pro', fontSize: 30),
-                  backgroundColor: Colors.deepPurple[150],
-                ),
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: Text(AppLocalizations.of(context)!.red + ","),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  textStyle: const TextStyle(
-                      fontFamily: 'Source Code Pro', fontSize: 30),
-                  backgroundColor: Colors.deepPurple[150],
-                ),
-                onPressed: () => setState(() {
-                  int cardA = lista[indexer];
-                  int cardB = lista[indexer + 1];
-                  showGeneralDialog(
-                    context: context,
-                    barrierColor: Colors.black38,
-                    barrierLabel: 'Label',
-                    barrierDismissible: true,
-                    pageBuilder: (_, __, ___) => Center(
-                      child: Container(
-                        color: Colors.transparent,
-                        child: Material(
-                          color: Colors.transparent,
-                          child: SizedBox(
-                            height: 300,
-                            width: 300,
-                            child: Stack(
-                              alignment: Alignment.center,
-                              fit: StackFit.loose,
-                              children: <Widget>[
-                                Positioned(
-                                    left: -1,
-                                    child: Image(
-                                      height: 300,
-                                        //width: 500,
-                                        image: AssetImage(_images[cardA]))),
-                                Positioned(
-                                    right: -1,
-                                    child: Image(
-                                      height: 300,
-                                        //width: 500,
-                                        image: AssetImage(_images[cardB]))),
-                              ],
-                              overflow: Overflow.visible,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-                child: Text(AppLocalizations.of(context)!.or_orange),
-              ),
-            ],
-          ),
+          Text(AppLocalizations.of(context)!.playerChoose,
+              style: TextStyle(
+                  fontFamily: 'Fredericka the Great', fontSize: 30.0)),
 
           Expanded(
             child: Stack(
@@ -254,7 +176,7 @@ class _JJGameState extends State<JJGame> {
                   child: Padding(
                     //padding: const EdgeInsets.all(20),
                     padding:
-                        EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
+                    EdgeInsets.symmetric(vertical: 14.0, horizontal: 20.0),
                     child: SwipableStack(
                       // detectableSwipeDirections: {
                       //   SwipeDirection.right,
@@ -269,9 +191,10 @@ class _JJGameState extends State<JJGame> {
 
                         if (flagisimo) {
                           return allowedActionsNon.contains(direction);
-                        } else {
+                        }else {
                           return allowedActions.contains(direction);
                         }
+
                       },
 
                       controller: _controller,
@@ -281,9 +204,8 @@ class _JJGameState extends State<JJGame> {
                         if (direction == SwipeDirection.left) {
                           shot_count = shotCounter + 1;
                           if (flag) {
-                            ShowAlert(widget
-                                    .PlayerList[widget.numberOfPlayers - 1]
-                                    .name +
+                            ShowAlert( widget.PlayerList[widget.numberOfPlayers - 1]
+                                .name +
                                 ", " +
                                 AppLocalizations.of(context)!.youDrink +
                                 " " +
@@ -295,8 +217,8 @@ class _JJGameState extends State<JJGame> {
                               context: context,
                               builder: (BuildContext context) => AlertDialog(
                                 title: Text(
-                                    // AppLocalizations.of(context)!.playerNo +
-                                    //     (indexer).toString() +
+                                  // AppLocalizations.of(context)!.playerNo +
+                                  //     (indexer).toString() +
                                     widget.PlayerList[indexer - 1].name +
                                         ", " +
                                         AppLocalizations.of(context)!.youDrink +
@@ -305,14 +227,14 @@ class _JJGameState extends State<JJGame> {
                                         " " +
                                         AppLocalizations.of(context)!.shots,
                                     style: TextStyle(
-                                        fontFamily: 'Source Code Pro',
+                                        fontFamily: 'Fredericka the Great',
                                         fontSize: 20.0)),
                                 actions: <Widget>[
                                   TextButton(
                                     style: TextButton.styleFrom(
                                       primary: Colors.white,
                                       textStyle: const TextStyle(
-                                          fontFamily: 'Source Code Pro',
+                                          fontFamily: 'Fredericka the Great',
                                           fontSize: 20),
                                       backgroundColor: Colors.deepPurple[150],
                                     ),
@@ -353,9 +275,10 @@ class _JJGameState extends State<JJGame> {
                               .fillBack, // Fill the back side of the card to make in the same size as the front.
                           direction: FlipDirection.HORIZONTAL,
                           onFlipDone: (status) {
-                            if (status) {
+                            if(status){
                               flagisimo = false;
-                            } else {
+                            }
+                            else{
                               flagisimo = true;
                             }
                           },

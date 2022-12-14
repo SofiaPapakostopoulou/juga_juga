@@ -6,6 +6,12 @@ import 'package:group_button/group_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:juga_juga/components/GameBrain.dart';
 import 'package:juga_juga/screens/JJGame.dart';
+import 'package:juga_juga/screens/JJNicknames.dart';
+import 'package:juga_juga/screens/Nickname.dart';
+
+import 'package:juga_juga/screens/Rules.dart';
+import 'package:juga_juga/components/Player.dart';
+import 'package:juga_juga/screens/JJNicknames.dart';
 
 class JJ extends StatefulWidget {
   @override
@@ -18,6 +24,8 @@ class _JJState extends State<JJ> {
   GameBrain numbers = GameBrain();
   int NumberOfPlayers = 0;
   int selectedButton = 0;
+  //List<Player> PlayerList = [];
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +34,7 @@ class _JJState extends State<JJ> {
 
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          SizedBox(height: 40.0),
+          SizedBox(height: 50.0),
           Column(
             children: <Widget>[
               Container(
@@ -36,13 +44,13 @@ class _JJState extends State<JJ> {
                 children: <Widget>[
                   Text(AppLocalizations.of(context)!.numberOfPlayers,
                     style: TextStyle(
-                    fontFamily: 'Fredericka the Great',
+                    fontFamily: 'Source Code Pro',
                     fontSize: 20.0)),
-                  Text(NumberOfPlayers.toString(),
+                  Text(" "+NumberOfPlayers.toString(),
                       style: TextStyle(
-                          fontFamily: 'Fredericka the Great',
+                          fontFamily: 'Source Code Pro',
                           fontSize: 20.0)),
-                  SizedBox(width:10),
+                  SizedBox(width:12),
                   Row(
                     children: <Widget>[
                       RoundIconButton(
@@ -81,11 +89,11 @@ class _JJState extends State<JJ> {
               children: <Widget>[
                 Text(AppLocalizations.of(context)!.numberOfPackOfCards,
                     style: TextStyle(
-                        fontFamily: 'Fredericka the Great',
+                        fontFamily: 'Source Code Pro',
                         fontSize: 20.0)),
                 // Text(numberOfPlayers.toString(),
                 //     style: TextStyle(
-                //         fontFamily: 'Fredericka the Great',
+                //         fontFamily: 'Source Code Pro',
                 //         fontSize: 20.0)),
                 GroupButton(
                   isRadio: true,
@@ -126,19 +134,57 @@ class _JJState extends State<JJ> {
                   // foreground
                 ),
                 onPressed: (){
+
+                  List<Player> PlayerList = [];
+
+                  // int x = 0;
+                  // for (var i = 0; i < NumberOfPlayers; i++){
+                  //   var player = new Player();
+                  //   x = i+1;
+                  //   player.number = x;
+                  //   PlayerList.add(player);
+                  //   print(PlayerList[i].number);
+                  // }
                   numbers.setNumberOfPlayers(NumberOfPlayers);
-                  //print(numbers.getnumberOfPlayers());
                   numbers.setNumberOfStacks(selectedButton+1);
-                  //print(numbers.getnumberOfStacks());
-                  //Navigator.pushNamed(context, '/JJGame');
                   Navigator.of(context).push(
                       MaterialPageRoute(builder:(context)=>
-                          new JJGame(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks())));
+                      //new JJNicknames(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks())));
+                      new Nickname(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks(),0,PlayerList)));
                 },
-                child: Text(AppLocalizations.of(context)!.letsGoButton)
+                child: Text(AppLocalizations.of(context)!.addNicknamesButton,
+                    style: TextStyle(
+                        overflow: TextOverflow.fade,
+                        fontFamily: 'Source Code Pro',
+                        fontSize: 20.0))
             ),
           ),
-          SizedBox(height: 30.0)
+          SizedBox(height: 20),
+          SizedBox(
+            width: 365.0,
+            height: 40.0,
+            child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.deepPurple[100], // background
+                  onPrimary: Colors.white,
+                  // foreground
+                ),
+                onPressed: (){
+                  numbers.setNumberOfPlayers(NumberOfPlayers);
+                  numbers.setNumberOfStacks(selectedButton+1);
+                  
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder:(context)=>
+                          new Rules(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks(), [])));
+                },
+                child: Text(AppLocalizations.of(context)!.letsGoButton,
+                    style: TextStyle(
+                        overflow: TextOverflow.fade,
+                        fontFamily: 'Source Code Pro',
+                        fontSize: 20.0))
+            ),
+          ),
+          SizedBox(height: 50.0)
         ],
       ),
 

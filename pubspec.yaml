@@ -32,6 +32,9 @@ dependencies:
   group_button: ^4.8.0
   playing_cards: ^0.2.0+7
   swipable_stack: ^1.2.0
+  flip_card: ^0.6.0
+  swipe_deck: ^1.1.0
+
 
 
 dev_dependencies:
@@ -47,7 +50,6 @@ flutter:
   assets:
     - profile_image/
     - card_images/
-    - assets/
     - images/
     - playing_cards/
 
@@ -55,3 +57,6 @@ flutter:
     - family: Fredericka the Great
       fonts:
         - asset: fonts/FrederickatheGreat-Regular.ttf
+    - family: Source Code Pro
+      fonts:
+        - asset: fonts/SourceCodePro-VariableFont_wght.ttf

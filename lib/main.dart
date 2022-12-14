@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:juga_juga/components/Player.dart';
 import 'package:juga_juga/screens/home_page.dart';
 import 'package:juga_juga/screens/JJ.dart';
 import 'package:juga_juga/screens/JJWild.dart';
 import 'package:juga_juga/screens/JJGame.dart';
 import 'package:juga_juga/screens/Settings.dart';
+import 'package:juga_juga/screens/Rules.dart';
+import 'package:juga_juga/screens/JJNicknames.dart';
+import 'package:juga_juga/screens/Nickname.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -30,8 +34,11 @@ class JugaJuga extends StatelessWidget {
         //'/': (context) => HomePage(),
         '/JJ': (context) => JJ(),
         '/JJWild': (context) => JJWild(),
-        '/JJGame': (context) => JJGame(0,0),
+        '/JJGame': (context) => JJGame(0,0,const []),
         '/Settings': (context) => Settings(),
+        '/Rules': (context) => Rules(0,0,[]),
+        '/JJNicknames': (context) => JJNicknames(0,0),
+        '/Nickname': (context) => Nickname(0,0,0,const []),
       },
       theme: ThemeData.dark().copyWith(
         primaryColor: Color(0xFF261A5D),

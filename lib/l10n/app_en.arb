@@ -1,10 +1,21 @@
 {
     "numberOfPlayers": "Number of players: ",
-    "numberOfPackOfCards": "Number of pack of cards: ",
+    "numberOfPackOfCards": "Packs of cards: ",
+    "addNicknamesButton": "Add names for your friends",
     "letsGoButton": "Let's go!",
     "playerNo": "Player nr. ",
     "playerChoose": "black, red or orange?",
     "youDrink": "you drink",
     "shot": "shot",
-    "shots": "shots"
+    "shots": "shots",
+    "rules": "How to play",
+    "rules_description": "The game is played in a series of rounds. The turn goes clockwise and the player who got drunk the most recently starts. During the game, each player take turns guessing the color of the next card or cards.\n•Red, if the next card is red.\n•Black, if the next card is black.\n•Orange, if the next two cards are one red and the other black (The order doesn't matter).\n•Pass, if he wants to stop guessing and continue the turn to the next player.\nIf the player guesses correctly, then he keeps guessing. If he guesses incorrectly, then he drinks as many shots as the cards he guessed correctly. The game ends when the pack of cards is done.",
+    "rules_button": "Got it!",
+    "swipe_guide": "Touch the card to reveal it and then swipe right if the player guessed correctly or swipe left if the player guessed wrongly.",
+    "addName": "Add name for player nr. ",
+    "name": "Name",
+    "black": "black",
+    "red": "red",
+    "or_orange": "or orange?"
+
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -10,6 +12,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       body: Column(
 
@@ -45,9 +51,13 @@ class _HomePageState extends State<HomePage> {
                   fontFamily: 'Fredericka the Great',
                   fontSize: 50.0))
           ),
+          SizedBox(height: 80),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.sackDollar, color: Colors.white60)),
+              SizedBox(width: 20),
+              IconButton(onPressed: (){}, icon: Icon(FontAwesomeIcons.heart, color: Colors.white60))
               //Donation Button
               //Rating Button
             ],
