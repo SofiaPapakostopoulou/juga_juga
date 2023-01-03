@@ -63,6 +63,7 @@ class _JJNicknamesState extends State<JJNicknames> {
                     borderRadius: BorderRadius.circular(10.0)),
               ),
               //Expanded(child: Container()),
+              SizedBox(height: 100),
               SizedBox(
                 width: 365.0,
                 height: 40.0,

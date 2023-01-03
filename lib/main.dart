@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:juga_juga/components/Player.dart';
 import 'package:juga_juga/screens/home_page.dart';
 import 'package:juga_juga/screens/JJ.dart';
 import 'package:juga_juga/screens/JJWild.dart';
@@ -18,6 +17,7 @@ class JugaJuga extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Localizations Sample App',
       localizationsDelegates: [
         AppLocalizations.delegate,

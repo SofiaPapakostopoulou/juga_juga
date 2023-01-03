@@ -22,9 +22,10 @@ class JJ extends StatefulWidget {
 class _JJState extends State<JJ> {
 
   GameBrain numbers = GameBrain();
-  int NumberOfPlayers = 0;
+  int NumberOfPlayers = 2;
   int selectedButton = 0;
   //List<Player> PlayerList = [];
+  var isDisable=true;
 
 
   @override
@@ -43,27 +44,31 @@ class _JJState extends State<JJ> {
               child: Row(
                 children: <Widget>[
                   Text(AppLocalizations.of(context)!.numberOfPlayers,
-                    style: TextStyle(
-                    fontFamily: 'Source Code Pro',
-                    fontSize: 20.0)),
-                  Text(" "+NumberOfPlayers.toString(),
                       style: TextStyle(
-                          fontFamily: 'Source Code Pro',
-                          fontSize: 20.0)),
-                  SizedBox(width:12),
+                      fontFamily: 'Source Code Pro',
+                      fontSize: 18.0)),
+                  Container(
+                    width: 30,
+                    alignment: Alignment.center,
+                    child: Text(NumberOfPlayers.toString(),
+                        style: TextStyle(
+                            fontFamily: 'Source Code Pro',
+                            fontSize: 20.0)),
+                  ),
+                  SizedBox(width:5),
                   Row(
                     children: <Widget>[
                       RoundIconButton(
                         icon: FontAwesomeIcons.minus,
                         onPressed: () {
                           setState(() {
-                            if(NumberOfPlayers>0){
+                            if(NumberOfPlayers>2){
                               NumberOfPlayers--;
                             }
                             });
                           },
                       ),
-                      SizedBox(width: 10.0),
+                      SizedBox(width: 5.0),
                       RoundIconButton(
                         icon: FontAwesomeIcons.plus,
                         onPressed: () {
@@ -126,15 +131,15 @@ class _JJState extends State<JJ> {
           Expanded(child: Container()),
           SizedBox(
             width: 365.0,
-            height: 40.0,
+            height: 50.0,
             child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple[100], // background
-                  onPrimary: Colors.white,
-                  // foreground
-                ),
-                onPressed: (){
 
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.deepPurple[100],
+                  onPrimary: Colors.white,
+                ),
+                onPressed:  (){
+                  
                   List<Player> PlayerList = [];
 
                   // int x = 0;
@@ -152,38 +157,43 @@ class _JJState extends State<JJ> {
                       //new JJNicknames(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks())));
                       new Nickname(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks(),0,PlayerList)));
                 },
-                child: Text(AppLocalizations.of(context)!.addNicknamesButton,
-                    style: TextStyle(
-                        overflow: TextOverflow.fade,
-                        fontFamily: 'Source Code Pro',
-                        fontSize: 20.0))
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(AppLocalizations.of(context)!.addNicknamesButton,
+                      style: TextStyle(
+                          overflow: TextOverflow.fade,
+                          fontFamily: 'Source Code Pro',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                      )),
+                )
             ),
           ),
           SizedBox(height: 20),
-          SizedBox(
-            width: 365.0,
-            height: 40.0,
-            child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple[100], // background
-                  onPrimary: Colors.white,
-                  // foreground
-                ),
-                onPressed: (){
-                  numbers.setNumberOfPlayers(NumberOfPlayers);
-                  numbers.setNumberOfStacks(selectedButton+1);
-                  
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder:(context)=>
-                          new Rules(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks(), [])));
-                },
-                child: Text(AppLocalizations.of(context)!.letsGoButton,
-                    style: TextStyle(
-                        overflow: TextOverflow.fade,
-                        fontFamily: 'Source Code Pro',
-                        fontSize: 20.0))
-            ),
-          ),
+          // SizedBox(
+          //   width: 365.0,
+          //   height: 40.0,
+          //   child: ElevatedButton(
+          //       style: ElevatedButton.styleFrom(
+          //         primary: Colors.deepPurple[100], // background
+          //         onPrimary: Colors.white,
+          //         // foreground
+          //       ),
+          //       onPressed: (){
+          //         numbers.setNumberOfPlayers(NumberOfPlayers);
+          //         numbers.setNumberOfStacks(selectedButton+1);
+          //
+          //         Navigator.of(context).push(
+          //             MaterialPageRoute(builder:(context)=>
+          //                 new Rules(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks(), [])));
+          //       },
+          //       child: Text(AppLocalizations.of(context)!.letsGoButton,
+          //           style: TextStyle(
+          //               overflow: TextOverflow.fade,
+          //               fontFamily: 'Source Code Pro',
+          //               fontSize: 20.0))
+          //   ),
+          // ),
           SizedBox(height: 50.0)
         ],
       ),

@@ -66,17 +66,16 @@ class _NicknameState extends State<Nickname> {
                             color: Colors.white,
                             fontWeight: FontWeight.w500),
                         decoration: InputDecoration(
-                            hintText: AppLocalizations.of(context)!.name,
-                            focusedBorder: OutlineInputBorder(
+                          hintText: AppLocalizations.of(context)!.name,
+                          focusedBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   color: Colors.black26, width: 2.0),
-                              borderRadius: BorderRadius.circular(10.0)
-                            ),
-                            contentPadding: EdgeInsets.all(20.0),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.black26)),
-                            //labelText: AppLocalizations.of(context)!.name
-                          ),
+                              borderRadius: BorderRadius.circular(10.0)),
+                          contentPadding: EdgeInsets.all(20.0),
+                          border: OutlineInputBorder(
+                              borderSide: BorderSide(color: Colors.black26)),
+                          //labelText: AppLocalizations.of(context)!.name
+                        ),
                       )
                     ],
                   ),
@@ -88,17 +87,17 @@ class _NicknameState extends State<Nickname> {
                 ),
 
                 //Expanded(child: Container()),
-                SizedBox(height: 250.0),
+                SizedBox(height: 320.0),
                 SizedBox(
                   width: 365.0,
-                  height: 40.0,
+                  height: 65.0,
                   child: Row(
                     children: <Widget>[
                       SizedBox(
-                        height: 100,
-                        width: 100,
+                        //height: 400,
+                        width: 75,
                         child: ElevatedButton(
-                            child: Icon(CupertinoIcons.arrow_left, size: 40),
+                            child: Icon(CupertinoIcons.arrow_left, size: 50),
                             onPressed: () {
                               setState(() {
                                 if (widget.index == 0) {
@@ -112,51 +111,63 @@ class _NicknameState extends State<Nickname> {
                               primary: Colors.deepPurple[100],
                               onPrimary: Colors.white,
                               shadowColor: Colors.grey,
-                              shape: CircleBorder(),
-
+                              //shape: CircleBorder(),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0)
+                              ),
+                              minimumSize: Size(150.0, 150.0),
                             )),
                       ),
                       Expanded(child: Row()),
                       SizedBox(
-                        width: 100,
-                        height: 100,
+                        width: 75,
+                        //height: 200,
                         child: ElevatedButton(
-                            child: Icon(CupertinoIcons.arrow_right, size: 40),
-                            onPressed: () {
-                              setState(() {
-                                String name = myController.text;
-                                var player = new Player();
-                                player.number = widget.index + 1;
-                                player.name = name;
-                                widget.PlayerList.add(player);
+                          child: Icon(CupertinoIcons.arrow_right,
+                              color: Colors.white, size: 50),
+                          onPressed: () {
+                            setState(() {
+                              String name = myController.text;
+                              var player = new Player();
+                              player.number = widget.index + 1;
+                              player.name = name;
+                              widget.PlayerList.add(player);
 
-                                if (widget.index + 1 < widget.numberOfPlayers) {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => new Nickname(
-                                          widget.numberOfPlayers,
-                                          widget.numberOfStacks,
-                                          widget.index + 1,
-                                          widget.PlayerList)));
-                                } else if (widget.index + 1 ==
-                                    widget.numberOfPlayers) {
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => new Rules(
-                                          widget.numberOfPlayers,
-                                          widget.numberOfStacks, widget.PlayerList)));
-                                }
-                              });
-                            },
-                            style: ElevatedButton.styleFrom(
-                              primary: Colors.deepPurple[100],
-                              onPrimary: Colors.white,
-                              shadowColor: Colors.grey,
-                              shape: CircleBorder(),
-                            )),
+                              if (widget.index + 1 < widget.numberOfPlayers) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => new Nickname(
+                                        widget.numberOfPlayers,
+                                        widget.numberOfStacks,
+                                        widget.index + 1,
+                                        widget.PlayerList)));
+                              } else if (widget.index + 1 ==
+                                  widget.numberOfPlayers) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => new Rules(
+                                        widget.numberOfPlayers,
+                                        widget.numberOfStacks,
+                                        widget.PlayerList)));
+                              }
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.deepPurple[100],
+                            //padding: EdgeInsets.all(10),
+                            onPrimary: Colors.white,
+                            shadowColor: Colors.grey,
+                            // shape: CircleBorder(),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0)
+                            ),
+                            minimumSize: Size(150, 150),
+                          )
+
+                        ),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 50.0)
+                SizedBox(height: 100.0)
               ],
             ),
           ],

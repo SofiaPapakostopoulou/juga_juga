@@ -1,5 +1,5 @@
 {
-    "numberOfPlayers": "Number of players: ",
+    "numberOfPlayers": "Number of players:",
     "numberOfPackOfCards": "Packs of cards: ",
     "addNicknamesButton": "Add names for your friends",
     "letsGoButton": "Let's go!",
@@ -16,6 +16,14 @@
     "name": "Name",
     "black": "black",
     "red": "red",
-    "or_orange": "or orange?"
+    "or_orange": "or orange?",
+    "shot_one": "give ${(shot_count).toString()} shots to the players of your choice.",
+    "shot_two": "you drink ${(shot_count/2).toString()} shot/shots and the player to your left drinks ${(shot_count/2).toString()} shot/shots.",
+    "shot_three": "you drink ${(shot_count/2).toString()} shot/shots and the player to your right drinks ${(shot_count/2).toString()} shot/shots.",
+    "shot_four": "choose a player to drink ${(shot_count).toString()} shot/shots.",
+    "shot_five": "you drink ${(shot_count).toString()} shot/shots",
+    "share": "give ",
+    "share2": " shot/shots to the players of your choice."
+
 
 }

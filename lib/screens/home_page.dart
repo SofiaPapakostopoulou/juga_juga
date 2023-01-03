@@ -38,20 +38,20 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 50.0))
           ),
           SizedBox(height: 80),
-          TextButton(
-          style: TextButton.styleFrom(
-          primary: Colors.white60,
-          shadowColor: Colors.white,
-          ),
-          onPressed: () {
-            Navigator.pushNamed(context, '/JJWild');
-          },
-          child: Text('JugaJuga Wild',
-              style: TextStyle(
-                  fontFamily: 'Fredericka the Great',
-                  fontSize: 50.0))
-          ),
-          SizedBox(height: 80),
+          // TextButton(
+          // style: TextButton.styleFrom(
+          // primary: Colors.white60,
+          // shadowColor: Colors.white,
+          // ),
+          // onPressed: () {
+          //   Navigator.pushNamed(context, '/JJWild');
+          // },
+          // child: Text('JugaJuga Wild',
+          //     style: TextStyle(
+          //         fontFamily: 'Fredericka the Great',
+          //         fontSize: 50.0))
+          // ),
+          SizedBox(height: 150),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

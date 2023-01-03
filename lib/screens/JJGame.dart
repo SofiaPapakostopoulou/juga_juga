@@ -101,6 +101,7 @@ class _JJGameState extends State<JJGame> {
   int shot_count = 0;
   bool flagisimo = true;
 
+
   late final SwipableStackController _controller;
 
   void _listenController() {
@@ -152,19 +153,63 @@ class _JJGameState extends State<JJGame> {
     );
   }
 
+  void ShowAlert1(String player, int counter){
+    showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+      title: Text(player + ", " + AppLocalizations.of(context)!.share+
+          counter.toString() + AppLocalizations.of(context)!.share2,
+          style:
+          TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
+      actions: <Widget>[
+        TextButton(
+          style: TextButton.styleFrom(
+            primary: Colors.white,
+            textStyle: const TextStyle(
+                fontFamily: 'Source Code Pro', fontSize: 20),
+            backgroundColor: Colors.deepPurple[150],
+          ),
+          onPressed: () => Navigator.pop(context, 'OK'),
+          child: const Text('OK'),
+        ),
+      ],
+      elevation: 24.0,
+      backgroundColor: Colors.deepPurple[400],
+    ),);
+  }
+
+  void ShowAlert2(String player, int counter){
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        title: Text(player + "," + AppLocalizations.of(context)!.youDrink +
+            (counter/2).toString() +AppLocalizations.of(context)!.shots + "and the player to your right drinks " + (counter/2).toString() + "shot/shots",
+            style:
+            TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
+        actions: <Widget>[
+          TextButton(
+            style: TextButton.styleFrom(
+              primary: Colors.white,
+              textStyle: const TextStyle(
+                  fontFamily: 'Source Code Pro', fontSize: 20),
+              backgroundColor: Colors.deepPurple[150],
+            ),
+            onPressed: () => Navigator.pop(context, 'OK'),
+            child: const Text('OK'),
+          ),
+        ],
+        elevation: 24.0,
+        backgroundColor: Colors.deepPurple[400],
+      ),);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 50.0),
-          SizedBox(),
-          // Text(
-          //     AppLocalizations.of(context)!.playerNo +
-          //         (indexer + 1).toString() +
-          //         ',',
-          //     style: TextStyle(fontFamily: 'Fredericka the Great', fontSize: 35.0)),
+          SizedBox(height: 60.0),
           Text(widget.PlayerList[indexer].name + ',',
               style: TextStyle(
                   fontFamily: 'Source Code Pro', fontSize: 35.0)),
@@ -173,7 +218,7 @@ class _JJGameState extends State<JJGame> {
           //     style: TextStyle(
           //         fontFamily: 'Fredericka the Great', fontSize: 30.0)),
           Wrap(
-            //mainAxisAlignment: MainAxisAlignment.center,
+            alignment: WrapAlignment.center,
             children: [
               TextButton(
                 style: TextButton.styleFrom(
@@ -182,7 +227,7 @@ class _JJGameState extends State<JJGame> {
                       fontFamily: 'Source Code Pro', fontSize: 30),
                   backgroundColor: Colors.deepPurple[150],
                 ),
-                onPressed: () => Navigator.pop(context, 'OK'),
+                onPressed: () => setState(() {FlipCardState().isFront;}),
                 child: Text(AppLocalizations.of(context)!.black + ","),
               ),
               TextButton(
@@ -225,43 +270,51 @@ class _JJGameState extends State<JJGame> {
                                 Positioned(
                                     left: -1,
                                     child: Image(
-                                      height: 300,
+                                        height: 300,
                                         //width: 500,
                                         image: AssetImage(_images[cardA]))),
                                 Positioned(
                                     right: -1,
                                     child: Image(
-                                      height: 300,
+                                        height: 300,
                                         //width: 500,
                                         image: AssetImage(_images[cardB]))),
                               ],
                               overflow: Overflow.visible,
-                            ),
-                          ),
-                        ),
+                            ),),
                       ),
                     ),
-                  );
+                  ),);
                 }),
                 child: Text(AppLocalizations.of(context)!.or_orange),
               ),
             ],
           ),
 
+          SizedBox(height: 40),
           Expanded(
             child: Stack(
-              children: [
-                Positioned.fill(
-                  child: Padding(
-                    //padding: const EdgeInsets.all(20),
-                    padding:
-                        EdgeInsets.symmetric(vertical: 0.0, horizontal: 10.0),
-                    child: SwipableStack(
+               children: [
+                    SwipableStack(
                       // detectableSwipeDirections: {
                       //   SwipeDirection.right,
                       //   SwipeDirection.left,
                       // },
                       onWillMoveNext: (index, direction) {
+                        final List<String> ShotList1 = [
+                          AppLocalizations.of(context)!.shot_four,
+                          AppLocalizations.of(context)!.shot_five];
+                        final List<String> ShotList2 = [
+                          AppLocalizations.of(context)!.shot_one,
+                          AppLocalizations.of(context)!.shot_two,
+                          AppLocalizations.of(context)!.shot_three,
+                          AppLocalizations.of(context)!.shot_four,
+                          AppLocalizations.of(context)!.shot_five];
+                        final List<String> ShotList3 = [
+                          AppLocalizations.of(context)!.shot_one,
+                          AppLocalizations.of(context)!.shot_four,
+                          AppLocalizations.of(context)!.shot_five];
+
                         final allowedActions = [
                           SwipeDirection.right,
                           SwipeDirection.left,
@@ -282,29 +335,35 @@ class _JJGameState extends State<JJGame> {
                         if (direction == SwipeDirection.left) {
                           shot_count = shotCounter + 1;
                           if (flag) {
-                            ShowAlert(widget
-                                    .PlayerList[widget.numberOfPlayers - 1]
-                                    .name +
-                                ", " +
-                                AppLocalizations.of(context)!.youDrink +
-                                " " +
-                                (shot_count).toString() +
-                                " " +
-                                AppLocalizations.of(context)!.shots);
+                            // ShowAlert(widget
+                            //         .PlayerList[widget.numberOfPlayers - 1]
+                            //         .name +
+                            //     ", " +
+                            //     AppLocalizations.of(context)!.youDrink +
+                            //     " " +
+                            //     (shot_count).toString() +
+                            //     " " +
+                            //     AppLocalizations.of(context)!.shots);
+
+                            ShowAlert1(widget.PlayerList[widget.numberOfPlayers - 1].name,shot_count);
                           } else {
+                            // List<String> tester = [
+                            //   widget.PlayerList[indexer - 1].name + ", " +
+                            //       AppLocalizations.of(context)!.youDrink + " " +
+                            //       (shot_count).toString() + " " +
+                            //       AppLocalizations.of(context)!.shots];
                             showDialog<String>(
                               context: context,
                               builder: (BuildContext context) => AlertDialog(
                                 title: Text(
-                                    // AppLocalizations.of(context)!.playerNo +
-                                    //     (indexer).toString() +
                                     widget.PlayerList[indexer - 1].name +
                                         ", " +
                                         AppLocalizations.of(context)!.youDrink +
                                         " " +
                                         (shot_count).toString() +
                                         " " +
-                                        AppLocalizations.of(context)!.shots,
+                                         AppLocalizations.of(context)!.shots,
+
                                     style: TextStyle(
                                         fontFamily: 'Source Code Pro',
                                         fontSize: 20.0)),
@@ -327,6 +386,7 @@ class _JJGameState extends State<JJGame> {
                               ),
                             );
                           }
+
 
                           if (indexer >= 0 &&
                               indexer < widget.numberOfPlayers - 1) {
@@ -361,9 +421,13 @@ class _JJGameState extends State<JJGame> {
                             }
                           },
 
-                          back: Container(
-                            margin: const EdgeInsets.symmetric(
-                                vertical: 70.0, horizontal: 5.0),
+                          back: Container( //front
+                            //alignment: Alignment.center,
+                            margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                            width: 350,
+                            height: 500,
+                            // margin: const EdgeInsets.symmetric(
+                            //     vertical: 30.0, horizontal: 10.0),
                             child: Stack(
                               fit: StackFit.expand,
                               children: [
@@ -375,9 +439,13 @@ class _JJGameState extends State<JJGame> {
                             ),
                           ),
 
-                          front: Container(
-                            margin: const EdgeInsets.symmetric(
-                                vertical: 80.0, horizontal: 5.0),
+                          front: Container( //back
+                            //alignment: Alignment.center,
+                            margin: new EdgeInsets.symmetric(horizontal: 20.0),
+                            width: 350,
+                            height: 500,
+                            // margin: const EdgeInsets.symmetric(
+                            //     vertical: 50.0, horizontal: 25.0),
                             child: Stack(
                               fit: StackFit.expand,
                               children: [
@@ -391,8 +459,8 @@ class _JJGameState extends State<JJGame> {
                         );
                       },
                     ),
-                  ),
-                ),
+                  //),
+                //),
               ],
             ),
           ),

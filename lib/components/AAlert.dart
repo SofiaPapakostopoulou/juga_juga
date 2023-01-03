@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Alert extends StatelessWidget {
-  Alert({required this.text});
+class AAlert extends StatelessWidget {
+  AAlert({required this.text});
 
-  final String text;
+  final text;
 
-
-  void ShowAlert(String text){
-    showDialog<String>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
         title: Text(text,
             style:
-            TextStyle(fontFamily: 'Fredericka the Great', fontSize: 20.0)),
+            TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
         actions: <Widget>[
           TextButton(
             style: TextButton.styleFrom(
               primary: Colors.white,
               textStyle: const TextStyle(
-                  fontFamily: 'Fredericka the Great', fontSize: 20),
+                  fontFamily: 'Source Code Pro', fontSize: 20),
               backgroundColor: Colors.deepPurple[150],
             ),
             onPressed: () => Navigator.pop(context, 'OK'),
@@ -27,7 +25,7 @@ class Alert extends StatelessWidget {
         ],
         elevation: 24.0,
         backgroundColor: Colors.deepPurple[400],
-      ),
-    );
+      );
   }
 }
+
