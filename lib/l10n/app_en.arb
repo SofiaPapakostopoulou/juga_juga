@@ -11,19 +11,18 @@
     "rules": "How to play",
     "rules_description": "The game is played in a series of rounds. The turn goes clockwise and the player who got drunk the most recently starts. During the game, each player take turns guessing the color of the next card or cards.\n•Red, if the next card is red.\n•Black, if the next card is black.\n•Orange, if the next two cards are one red and the other black (The order doesn't matter).\n•Pass, if he wants to stop guessing and continue the turn to the next player.\nIf the player guesses correctly, then he keeps guessing. If he guesses incorrectly, then he drinks as many shots as the cards he guessed correctly. The game ends when the pack of cards is done.",
     "rules_button": "Got it!",
-    "swipe_guide": "Touch the card to reveal it and then swipe right if the player guessed correctly or swipe left if the player guessed wrongly.",
+    "swipe_guide": "Touch the card to reveal it and then swipe right if the player guessed correctly or swipe left if the player guessed wrongly. If the player's guess is orange swipe up or down without tapping the card first. this will reveal the next two cards.",
     "addName": "Add name for player nr. ",
     "name": "Name",
     "black": "black",
     "red": "red",
     "or_orange": "or orange?",
-    "shot_one": "give ${(shot_count).toString()} shots to the players of your choice.",
-    "shot_two": "you drink ${(shot_count/2).toString()} shot/shots and the player to your left drinks ${(shot_count/2).toString()} shot/shots.",
-    "shot_three": "you drink ${(shot_count/2).toString()} shot/shots and the player to your right drinks ${(shot_count/2).toString()} shot/shots.",
-    "shot_four": "choose a player to drink ${(shot_count).toString()} shot/shots.",
-    "shot_five": "you drink ${(shot_count).toString()} shot/shots",
-    "share": "give ",
-    "share2": " shot/shots to the players of your choice."
+    "choose_player": ", choose a player to drink ",
+    "player_right": " and the player to your right drinks ",
+    "player_left": " and the player to your left drinks ",
+    "share": ", share ",
+    "share2": " to the players of your choice.",
+    "shot_s": "shot/s"
 
 
 }
