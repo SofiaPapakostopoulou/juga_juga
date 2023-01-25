@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flip_card/flip_card_controller.dart';
@@ -17,7 +16,6 @@ import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:swipe_deck/swipe_deck.dart';
 
 const _images = [
   'playing_cards/ace_of_clubs.png',
@@ -91,8 +89,7 @@ class JJGame extends StatefulWidget {
 
 class _JJGameState extends State<JJGame> {
   List<PlayingCard> deck = CardMaker().getCards();
-  List<int> lista = CardMaker().IndexMaker();
-  //List<int> listaHalf = CardMaker().IndexMaker();
+  late List<int> lista = CardMaker().IndexMaker(widget.numberOfStacks);
   int indexer = 0;
   int shotCounter = 0;
   bool flag = false;
@@ -114,6 +111,7 @@ class _JJGameState extends State<JJGame> {
 
   @override
   void initState() {
+
     super.initState();
 
     SchedulerBinding.instance?.addPostFrameCallback((_) {
@@ -169,95 +167,28 @@ class _JJGameState extends State<JJGame> {
           SizedBox(height: 60.0),
           Text(widget.PlayerList[indexer].name + ',',
               style: TextStyle(
-                  fontFamily: 'Source Code Pro', fontSize: 35.0)),
-
-          // Text(AppLocalizations.of(context)!.playerChoose,
-          //     style: TextStyle(
-          //         fontFamily: 'Fredericka the Great', fontSize: 30.0)),
+                  fontFamily: 'Source Code Pro', fontSize: 40.0)),
           Wrap(
             alignment: WrapAlignment.center,
             children: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  textStyle: const TextStyle(
-                      fontFamily: 'Source Code Pro', fontSize: 30),
-                  backgroundColor: Colors.deepPurple[150],
-                ),
-                onPressed: () => setState(() {FlipCardState().isFront;}),
-                child: Text(AppLocalizations.of(context)!.black + ","),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  textStyle: const TextStyle(
-                      fontFamily: 'Source Code Pro', fontSize: 30),
-                  backgroundColor: Colors.deepPurple[150],
-                ),
-                onPressed: () => Navigator.pop(context, 'OK'),
-                child: Text(AppLocalizations.of(context)!.red + ","),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  textStyle: const TextStyle(
-                      fontFamily: 'Source Code Pro', fontSize: 30),
-                  backgroundColor: Colors.deepPurple[150],
-                ),
-                onPressed: () => setState(() {
-                  // int cardA = lista[indexer];
-                  // int cardB = lista[indexer + 1];
-                  // showGeneralDialog(
-                  //   context: context,
-                  //   barrierColor: Colors.black38,
-                  //   barrierLabel: 'Label',
-                  //   barrierDismissible: true,
-                  //   pageBuilder: (_, __, ___) => Center(
-                  //     child: Container(
-                  //       color: Colors.transparent,
-                  //       child: Material(
-                  //         color: Colors.transparent,
-                  //         child: SizedBox(
-                  //           height: 300,
-                  //           width: 300,
-                  //           child: Stack(
-                  //             alignment: Alignment.center,
-                  //             fit: StackFit.loose,
-                  //             children: <Widget>[
-                  //               Positioned(
-                  //                   left: -1,
-                  //                   child: Image(
-                  //                       height: 300,
-                  //                       //width: 500,
-                  //                       image: AssetImage(_images[cardA]))),
-                  //               Positioned(
-                  //                   right: -1,
-                  //                   child: Image(
-                  //                       height: 300,
-                  //                       //width: 500,
-                  //                       image: AssetImage(_images[cardB]))),
-                  //             ],
-                  //             overflow: Overflow.visible,
-                  //           ),),
-                  //     ),
-                  //   ),
-                  // ),);
-                }
-                ),
-                child: Text(AppLocalizations.of(context)!.or_orange),
-              ),
+              Text(AppLocalizations.of(context)!.black + ", ",
+                  style: TextStyle(
+                      fontFamily: 'Source Code Pro', fontSize: 35.0)),
+              Text(AppLocalizations.of(context)!.red + ",",
+                  style: TextStyle(
+                      fontFamily: 'Source Code Pro', fontSize: 35.0)),
+              Text(AppLocalizations.of(context)!.or_orange,
+                  style: TextStyle(
+                      fontFamily: 'Source Code Pro', fontSize: 35.0)),
             ],
           ),
 
-          SizedBox(height: 40),
+          SizedBox(height: 50),
           Expanded(
             child: Stack(
                children: [
                     SwipableStack(
-                      // detectableSwipeDirections: {
-                      //   SwipeDirection.right,
-                      //   SwipeDirection.left,
-                      // },
+
                       onWillMoveNext: (index, direction) {
                         final allowedActions = [
                           SwipeDirection.right,
@@ -277,8 +208,7 @@ class _JJGameState extends State<JJGame> {
                       controller: _controller,
                       stackClipBehaviour: Clip.none,
                       onSwipeCompleted: (index, direction) {
-
-
+                        print(lista[index]);
 
                         flagisimo = true;
 
@@ -399,9 +329,13 @@ class _JJGameState extends State<JJGame> {
                             indexer = 0;
                           }
                           shotCounter = 0;
-                        } else if (direction == SwipeDirection.right) {
+                          print(index);
+
+                        }
+                        else if (direction == SwipeDirection.right) {
                           shotCounter++;
-                        } else if (direction == SwipeDirection.up){
+                        }
+                        else if (direction == SwipeDirection.up){
 
                           int cardA = lista[index];
                           int cardB = lista[index + 1];
@@ -585,6 +519,57 @@ class _JJGameState extends State<JJGame> {
                             ),);
                         }
 
+                        String PlayerName = widget.PlayerList[widget.numberOfPlayers - 1].name;
+                        int Shots = shot_count;
+
+                        if(index>=(widget.numberOfStacks)*51){
+                          if (shotCounter>0){
+                            showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Text(AppLocalizations.of(context)!.final_alert1 +PlayerName +
+                                    AppLocalizations.of(context)!.share + Shots.toString() +" "+
+                                    AppLocalizations.of(context)!.shot_s + AppLocalizations.of(context)!.share2
+                                    +AppLocalizations.of(context)!.final_alert2,
+                                    style:
+                                    TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.yes),
+                                    child: Text( AppLocalizations.of(context)!.yes ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.no),
+                                    child: Text(AppLocalizations.of(context)!.no),
+                                  ),
+                                ],
+                                elevation: 24.0,
+                                backgroundColor: Colors.deepPurple[400],
+                              ),
+                            );
+                          }else if(shotCounter==0){
+                            showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: Text(AppLocalizations.of(context)!.final_alert1 + AppLocalizations.of(context)!.final_alert2,
+                                    style:
+                                    TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.yes),
+                                    child: Text( AppLocalizations.of(context)!.yes ),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.no),
+                                    child: Text(AppLocalizations.of(context)!.no),
+                                  ),
+                                ],
+                                elevation: 24.0,
+                                backgroundColor: Colors.deepPurple[400],
+                              ),
+                            );
+                          }
+                        }
 
                       },
                       horizontalSwipeThreshold: 0.8,

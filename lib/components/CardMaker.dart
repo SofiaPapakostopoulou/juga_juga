@@ -88,10 +88,21 @@ class CardMaker {
     return x;
   }
 
-  List<int> IndexMaker(){
-    List<int> list_a = Iterable<int>.generate(52).toList();
+  // List<int> IndexMaker(){
+  //   List<int> list_a = Iterable<int>.generate(52).toList();
+  //   list_a.shuffle();
+  //   print(list_a);
+  //   return list_a;
+  // }
+
+  List<int> IndexMaker(int NumOfDecks){
+    List<int> list_a = [];
+    for (var i = 0; i < NumOfDecks; i++){
+      list_a.addAll(Iterable<int>.generate(52).toList());
+    }
     list_a.shuffle();
     print(list_a);
+    print(list_a.length);
     return list_a;
   }
 

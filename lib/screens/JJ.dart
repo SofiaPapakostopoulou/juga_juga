@@ -23,8 +23,7 @@ class _JJState extends State<JJ> {
 
   GameBrain numbers = GameBrain();
   int NumberOfPlayers = 2;
-  int selectedButton = 0;
-  //List<Player> PlayerList = [];
+  int selectedButton = 1;
   var isDisable=true;
 
 
@@ -103,7 +102,11 @@ class _JJState extends State<JJ> {
                 GroupButton(
                   isRadio: true,
                   spacing: 10,
-                  onSelected: (index, isSelected) => selectedButton = index + 1,
+                  onSelected: (index, isSelected) => {
+                    selectedButton = index + 1,
+                    print(selectedButton),
+                  },
+
                       //print('$index button is selected'),
                   buttons: ["1", "2", "3", "4"],
                   selectedButton: 0,
@@ -151,7 +154,8 @@ class _JJState extends State<JJ> {
                   //   print(PlayerList[i].number);
                   // }
                   numbers.setNumberOfPlayers(NumberOfPlayers);
-                  numbers.setNumberOfStacks(selectedButton+1);
+                  numbers.setNumberOfStacks(selectedButton);
+                  print(numbers.numberOfStacks);
                   Navigator.of(context).push(
                       MaterialPageRoute(builder:(context)=>
                       //new JJNicknames(numbers.getnumberOfPlayers(),numbers.getnumberOfStacks())));
