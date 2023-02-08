@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:juga_juga/components/GameBrain.dart';
 import 'package:juga_juga/components/Player.dart';
+import 'package:juga_juga/screens/JJHomePage.dart';
 import 'package:juga_juga/components/example_card.dart';
 import 'package:juga_juga/components/card_overlay.dart';
 import 'package:juga_juga/components/card_label.dart';
@@ -209,6 +210,14 @@ class _JJGameState extends State<JJGame> {
                       stackClipBehaviour: Clip.none,
                       onSwipeCompleted: (index, direction) {
                         print(lista[index]);
+                        print("index: $index");
+                        index = index+1;
+                        print("index: $index");
+                        print("index me swipe");
+                        print(SwipableStackController().currentIndex);
+                        SwipableStackController().currentIndex=index+2;
+                        print(SwipableStackController().currentIndex);
+
 
                         flagisimo = true;
 
@@ -329,7 +338,7 @@ class _JJGameState extends State<JJGame> {
                             indexer = 0;
                           }
                           shotCounter = 0;
-                          print(index);
+                          print("index $index");
 
                         }
                         else if (direction == SwipeDirection.right) {
@@ -363,7 +372,7 @@ class _JJGameState extends State<JJGame> {
                                         flagisimo = true;
                                         if(directionn == SwipeDirection.left ){
                                           shot_count = shotCounter + 2;
-                                          print(flag);
+                                          //print(flag);
 
                                           String PlayerName = widget.PlayerList[widget.numberOfPlayers - 1].name;
                                           int Shots = shot_count;
@@ -479,7 +488,10 @@ class _JJGameState extends State<JJGame> {
                                             indexer = 0;
                                           }
                                           shotCounter = 0;
-                                          index = index+2;
+                                          index = index+2 ;
+                                          //SwipableStackController().currentIndex= index+2;
+                                          //indexx = indexx+2;
+                                          print("index $index");
                                         }else{
                                           shotCounter=shotCounter+2;
                                           print(shotCounter);
@@ -556,12 +568,15 @@ class _JJGameState extends State<JJGame> {
                                     TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
                                 actions: <Widget>[
                                   TextButton(
-                                    onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.yes),
+                                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => new JJGame(
+                                    widget.numberOfPlayers, widget.numberOfStacks, widget.PlayerList))),
                                     child: Text( AppLocalizations.of(context)!.yes ),
                                   ),
                                   TextButton(
-                                    onPressed: () => Navigator.pop(context, AppLocalizations.of(context)!.no),
-                                    child: Text(AppLocalizations.of(context)!.no),
+                                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (context) => new HomePage())),
+                                    child: Text( AppLocalizations.of(context)!.no ),
                                   ),
                                 ],
                                 elevation: 24.0,

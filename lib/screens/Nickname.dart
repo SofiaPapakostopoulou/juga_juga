@@ -58,7 +58,7 @@ class _NicknameState extends State<Nickname> {
                       TextField(
                         controller: myController,
                         keyboardType: TextInputType.name,
-                        maxLength: 15,
+                        maxLength: 10,
                         style: TextStyle(
                             overflow: TextOverflow.fade,
                             fontFamily: 'Source Code Pro',
@@ -128,6 +128,7 @@ class _NicknameState extends State<Nickname> {
                           onPressed: () {
                             setState(() {
                               String name = myController.text;
+                              if(name.length>10){name.substring(0,9);}
                               var player = new Player();
                               player.number = widget.index + 1;
                               player.name = name;

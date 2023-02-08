@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:juga_juga/screens/home_page.dart';
+import 'package:juga_juga/screens/JJHomePage.dart';
 import 'package:juga_juga/screens/JJ.dart';
 import 'package:juga_juga/screens/JJWild.dart';
 import 'package:juga_juga/screens/JJGame.dart';
@@ -39,6 +39,7 @@ class JugaJuga extends StatelessWidget {
         '/Rules': (context) => Rules(0,0,[]),
         '/JJNicknames': (context) => JJNicknames(0,0),
         '/Nickname': (context) => Nickname(0,0,0,const []),
+        '/HomePage': (context) => HomePage(),
       },
       theme: ThemeData.dark().copyWith(
         primaryColor: Color(0xFF261A5D),
