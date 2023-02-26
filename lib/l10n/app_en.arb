@@ -1,5 +1,6 @@
 {
     "numberOfPlayers": "Number of players:",
+    "players": "Players:",
     "numberOfPackOfCards": "Packs of cards: ",
     "addNicknamesButton": "Add names for your friends",
     "letsGoButton": "Let's go!",
@@ -9,7 +10,7 @@
     "shot": "shot",
     "shots": "shots",
     "rules": "How to play",
-    "rules_description": "The game is played in a series of rounds. The turn goes clockwise and the player who got drunk the most recently starts. During the game, each player take turns guessing the color of the next card or cards.\n•Red, if the next card is red.\n•Black, if the next card is black.\n•Orange, if the next two cards are one red and the other black (The order doesn't matter).\n•Pass, if he wants to stop guessing and continue the turn to the next player.\nIf the player guesses correctly, then he keeps guessing. If he guesses incorrectly, then he drinks as many shots as the cards he guessed correctly. The game ends when the pack of cards is done.",
+    "rules_description": "The game is played in a series of rounds. The turn goes clockwise and the player who got drunk the most recently starts. During the game, each player take turns guessing the color of the next card or cards.\n•Red, if the next card is red.\n•Black, if the next card is black.\n•Orange, if the next two cards are one red and the other black (The order doesn't matter).\nIf the player guesses correctly, then he keeps guessing. If he guesses incorrectly, then he drinks as many shots as the cards he guessed correctly. The game ends when the pack of cards is done.",
     "rules_button": "Got it!",
     "swipe_guide": "Touch the card to reveal it and then swipe right if the player guessed correctly or swipe left if the player guessed wrongly. If the player's guess is orange swipe up or down without tapping the card first. this will reveal the next two cards.",
     "addName": "Add name for player nr. ",
@@ -26,7 +27,8 @@
     "final_alert1": "The deck is over. ",
     "final_alert2": "Let's go for another round.",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "sure": "Are yoy sure?"
 
 
 }

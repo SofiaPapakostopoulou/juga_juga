@@ -22,13 +22,27 @@ class Nickname extends StatefulWidget {
 }
 
 class _NicknameState extends State<Nickname> {
-  final myController = TextEditingController();
+  //final myController = TextEditingController();
+  bool isButtonActive = false;
+  late TextEditingController controller = TextEditingController();
   @override
+  void initState() {
+    super.initState();
+    controller = TextEditingController();
+    controller.addListener(() {
+      final isButtonActive = controller.text.isNotEmpty;
+
+      setState(() => this.isButtonActive = isButtonActive);
+    });
+  }
+
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    //myController.dispose();
+    controller.dispose();
     super.dispose();
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +70,8 @@ class _NicknameState extends State<Nickname> {
                               fontSize: 25.0)),
                       //SizedBox(height: 50),
                       TextField(
-                        controller: myController,
+                        //controller: myController,
+                        controller: controller,
                         keyboardType: TextInputType.name,
                         maxLength: 10,
                         style: TextStyle(
@@ -82,8 +97,8 @@ class _NicknameState extends State<Nickname> {
                   margin: EdgeInsets.all(15.0),
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                      color: Colors.deepPurple[100],
-                      borderRadius: BorderRadius.circular(10.0)),
+                      color: Color(0xFF594690),
+                      borderRadius: BorderRadius.circular(50.0)),
                 ),
 
                 //Expanded(child: Container()),
@@ -101,20 +116,20 @@ class _NicknameState extends State<Nickname> {
                             onPressed: () {
                               setState(() {
                                 if (widget.index == 0) {
-                                  null;
+                                  Navigator.of(context).pop();
                                 } else {
                                   Navigator.of(context).pop();
                                 }
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                              primary: Colors.deepPurple[100],
+                              elevation: 5.0,
+                              primary: Color(0xFF5F6A69),
                               onPrimary: Colors.white,
                               shadowColor: Colors.grey,
                               //shape: CircleBorder(),
                               shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0)
-                              ),
+                                  borderRadius: BorderRadius.circular(50.0)),
                               minimumSize: Size(150.0, 150.0),
                             )),
                       ),
@@ -123,47 +138,86 @@ class _NicknameState extends State<Nickname> {
                         width: 75,
                         //height: 200,
                         child: ElevatedButton(
-                          child: Icon(CupertinoIcons.arrow_right,
-                              color: Colors.white, size: 50),
-                          onPressed: () {
-                            setState(() {
-                              String name = myController.text;
-                              if(name.length>10){name.substring(0,9);}
-                              var player = new Player();
-                              player.number = widget.index + 1;
-                              player.name = name;
-                              widget.PlayerList.add(player);
+                            child: Icon(CupertinoIcons.arrow_right,
+                                color: Colors.white, size: 50),
+                            onPressed: isButtonActive
+                                ? () {
+                                    setState(() {
+                                      isButtonActive = false;
+                                      //String name = myController.text;
+                                      String name = controller.text;
 
-                              if (widget.index + 1 < widget.numberOfPlayers) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => new Nickname(
-                                        widget.numberOfPlayers,
-                                        widget.numberOfStacks,
-                                        widget.index + 1,
-                                        widget.PlayerList)));
-                              } else if (widget.index + 1 ==
-                                  widget.numberOfPlayers) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => new Rules(
-                                        widget.numberOfPlayers,
-                                        widget.numberOfStacks,
-                                        widget.PlayerList)));
-                              }
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurple[100],
-                            //padding: EdgeInsets.all(10),
-                            onPrimary: Colors.white,
-                            shadowColor: Colors.grey,
-                            // shape: CircleBorder(),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10.0)
-                            ),
-                            minimumSize: Size(150, 150),
-                          )
+                                      if (name.length > 10) {
+                                        name.substring(0, 9);
+                                      }
+                                      var player = new Player();
+                                      player.number = widget.index + 1;
+                                      player.name = name;
+                                      widget.PlayerList.add(player);
 
-                        ),
+                                      if (widget.index + 1 <
+                                          widget.numberOfPlayers) {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    new Nickname(
+                                                        widget.numberOfPlayers,
+                                                        widget.numberOfStacks,
+                                                        widget.index + 1,
+                                                        widget.PlayerList)));
+                                      } else if (widget.index + 1 ==
+                                          widget.numberOfPlayers) {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: (context) => new Rules(
+                                                    widget.numberOfPlayers,
+                                                    widget.numberOfStacks,
+                                                    widget.PlayerList)));
+                                      }
+                                    });
+                                  }
+                                : null,
+                            // onPressed: () {
+                            //   setState(() {
+                            //     //String name = myController.text;
+                            //     String name = controller.text;
+                            //     if(name.isEmpty){
+                            //       ShowAlert("Please enter a name!");
+                            //     }
+                            //     if(name.length>10){name.substring(0,9);}
+                            //     var player = new Player();
+                            //     player.number = widget.index + 1;
+                            //     player.name = name;
+                            //     widget.PlayerList.add(player);
+                            //
+                            //     if (widget.index + 1 < widget.numberOfPlayers) {
+                            //       Navigator.of(context).push(MaterialPageRoute(
+                            //           builder: (context) => new Nickname(
+                            //               widget.numberOfPlayers,
+                            //               widget.numberOfStacks,
+                            //               widget.index + 1,
+                            //               widget.PlayerList)));
+                            //     } else if (widget.index + 1 ==
+                            //         widget.numberOfPlayers) {
+                            //       Navigator.of(context).push(MaterialPageRoute(
+                            //           builder: (context) => new Rules(
+                            //               widget.numberOfPlayers,
+                            //               widget.numberOfStacks,
+                            //               widget.PlayerList)));
+                            //     }
+                            //   });
+                            // },
+                            style: ElevatedButton.styleFrom(
+                              elevation: 5.0,
+                              primary: Color(0xFF5F6A69),
+                              //padding: EdgeInsets.all(10),
+                              onPrimary: Colors.white,
+                              shadowColor: Colors.grey,
+                              // shape: CircleBorder(),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0)),
+                              minimumSize: Size(150, 150),
+                            )),
                       ),
                     ],
                   ),

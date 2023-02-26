@@ -39,21 +39,28 @@ class _RulesState extends State<Rules> {
                 SizedBox(height: 7),
                 SizedBox(
                   width: double.infinity,
+                  //height: 50,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => new JJGame(
                               widget.numberOfPlayers, widget.numberOfStacks, widget.PlayerList)));
                     },
-                    style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.deepPurple[300]),
+                    style: ElevatedButton.styleFrom(
+                      elevation: 5.0,
+                      primary: Color(0xFF5F6A69),
+                      onPrimary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50.0)
+                      ),
                     ),
                     child: Text(AppLocalizations.of(context)!.rules_button,
                         style: TextStyle(
+                          //color: Color(0xFF261A5D),
+                          color: Colors.white,
                             overflow: TextOverflow.fade,
                             fontFamily: 'Source Code Pro',
-                            fontSize: 20.0)),
+                            fontSize: 25.0)),
                   ),
                 ),
               ],
@@ -62,8 +69,8 @@ class _RulesState extends State<Rules> {
           margin: EdgeInsets.only(left: 20, top: 70, right: 20, bottom: 70),
           padding: EdgeInsets.all(10.0),
           decoration: BoxDecoration(
-              color: Colors.deepPurple[100],
-              borderRadius: BorderRadius.circular(10.0),
+              color: Color(0xFF594690),
+              borderRadius: BorderRadius.circular(20.0),
           ),
         ),
       );

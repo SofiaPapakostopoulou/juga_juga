@@ -39,20 +39,24 @@ class _JJState extends State<JJ> {
             children: <Widget>[
               Container(
               width: 365.0,
-              height: 120.0,
+              height: 150.0,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
-                  Text(AppLocalizations.of(context)!.numberOfPlayers,
+                  Text(AppLocalizations.of(context)!.players,
                       style: TextStyle(
+                          color: Colors.white,
+
                       fontFamily: 'Source Code Pro',
-                      fontSize: 18.0)),
+                      fontSize: 22.0)),
                   Container(
                     width: 30,
                     alignment: Alignment.center,
                     child: Text(NumberOfPlayers.toString(),
                         style: TextStyle(
+                            color: Colors.white,
                             fontFamily: 'Source Code Pro',
-                            fontSize: 20.0)),
+                            fontSize: 22.0)),
                   ),
                   SizedBox(width:5),
                   Row(
@@ -80,21 +84,23 @@ class _JJState extends State<JJ> {
               margin: EdgeInsets.all(15.0),
               padding: EdgeInsets.all(10.0),
               decoration: BoxDecoration(
-                color: Colors.deepPurple[100],
-                borderRadius: BorderRadius.circular(10.0)
+                //color: Colors.deepPurple[100],
+                color: Color(0xFF594690),
+                borderRadius: BorderRadius.circular(50.0)
               ),
             ),
 
           Container(
             width: 365.0,
-            height: 120.0,
+            height: 150.0,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
                 Text(AppLocalizations.of(context)!.numberOfPackOfCards,
                     style: TextStyle(
+                        color: Colors.white,
                         fontFamily: 'Source Code Pro',
-                        fontSize: 20.0)),
+                        fontSize: 23.0)),
                 // Text(numberOfPlayers.toString(),
                 //     style: TextStyle(
                 //         fontFamily: 'Source Code Pro',
@@ -102,6 +108,7 @@ class _JJState extends State<JJ> {
                 GroupButton(
                   isRadio: true,
                   spacing: 10,
+                  elevation: 5.0,
                   onSelected: (index, isSelected) => {
                     selectedButton = index + 1,
                     print(selectedButton),
@@ -111,12 +118,12 @@ class _JJState extends State<JJ> {
                   buttons: ["1", "2", "3", "4"],
                   selectedButton: 0,
                   unselectedTextStyle: TextStyle(
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.bold,
                     fontSize: 14,
                     color: Colors.white,
                   ),
-                    borderRadius: BorderRadius.circular(5.0),
-                    unselectedColor: Color(0xFF4C4F5E),
+                    borderRadius: BorderRadius.circular(20.0),
+                    unselectedColor: Color(0xFF5F6A69),
                   selectedColor: Colors.deepPurple[300],
                   buttonHeight: 40.0,
                 ),
@@ -125,8 +132,9 @@ class _JJState extends State<JJ> {
             margin: EdgeInsets.all(15.0),
             padding: EdgeInsets.all(10.0),
             decoration: BoxDecoration(
-                color: Colors.deepPurple[100],
-                borderRadius: BorderRadius.circular(10.0)
+                //color: Colors.deepPurple[100],
+                color: Color(0xFF594690),
+                borderRadius: BorderRadius.circular(50.0)
             ),
           ),
              ],
@@ -134,25 +142,22 @@ class _JJState extends State<JJ> {
           Expanded(child: Container()),
           SizedBox(
             width: 365.0,
-            height: 50.0,
+            height: 60.0,
             child: ElevatedButton(
 
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple[100],
+                  elevation: 5.0,
+                  //primary: Color(0xC8594690), 0xFF5F6A69
+                  primary: Color(0xFF5F6A69),
                   onPrimary: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0)
+                  ),
                 ),
                 onPressed:  (){
-                  
+
                   List<Player> PlayerList = [];
 
-                  // int x = 0;
-                  // for (var i = 0; i < NumberOfPlayers; i++){
-                  //   var player = new Player();
-                  //   x = i+1;
-                  //   player.number = x;
-                  //   PlayerList.add(player);
-                  //   print(PlayerList[i].number);
-                  // }
                   numbers.setNumberOfPlayers(NumberOfPlayers);
                   numbers.setNumberOfStacks(selectedButton);
                   print(numbers.numberOfStacks);
@@ -165,6 +170,8 @@ class _JJState extends State<JJ> {
                   fit: BoxFit.fitWidth,
                   child: Text(AppLocalizations.of(context)!.addNicknamesButton,
                       style: TextStyle(
+                        //color: Color(0xFF261A5D),
+                        color: Color(0xFFF8EBFF),
                           overflow: TextOverflow.fade,
                           fontFamily: 'Source Code Pro',
                           fontSize: 20.0,
@@ -173,7 +180,7 @@ class _JJState extends State<JJ> {
                 )
             ),
           ),
-          SizedBox(height: 20),
+          //SizedBox(height: 20),
           // SizedBox(
           //   width: 365.0,
           //   height: 40.0,
@@ -198,7 +205,7 @@ class _JJState extends State<JJ> {
           //               fontSize: 20.0))
           //   ),
           // ),
-          SizedBox(height: 50.0)
+          SizedBox(height: 30.0)
         ],
       ),
 

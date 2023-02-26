@@ -52,6 +52,7 @@ flutter:
     - card_images/
     - images/
     - playing_cards/
+    - introgif/
 
   fonts:
     - family: Fredericka the Great

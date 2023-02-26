@@ -9,7 +9,7 @@ class RoundIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      elevation: 0.0,
+      elevation: 5.0,
       child: Icon(icon),
       onPressed: onPressed,
       constraints: BoxConstraints.tightFor(
@@ -17,7 +17,7 @@ class RoundIconButton extends StatelessWidget {
         height: 45.0,
       ),
       shape: CircleBorder(),
-      fillColor: Color(0xFF4C4F5E),
+      fillColor: Color(0xFF5F6A69),
     );
   }
 }
