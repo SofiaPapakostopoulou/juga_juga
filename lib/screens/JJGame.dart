@@ -825,7 +825,7 @@ class _JJGameState extends State<JJGame> {
                     int Shots = end_shot;
                     man_index++;
 
-                    if (man_index >= (widget.numberOfStacks) * 10) { //51
+                    if (man_index >= (widget.numberOfStacks) * 51) { //51
                       if (Shots > 0) {
                         showDialog<String>(
                           barrierDismissible: false,
