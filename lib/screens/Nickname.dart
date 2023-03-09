@@ -23,24 +23,56 @@ class Nickname extends StatefulWidget {
 
 class _NicknameState extends State<Nickname> {
   //final myController = TextEditingController();
-  bool isButtonActive = false;
-  late TextEditingController controller = TextEditingController();
+   bool isButtonActive = false;
+   late TextEditingController controller = TextEditingController();
+  // final HitTestBehavior behavior = HitTestBehavior.translucent;
+
   @override
   void initState() {
     super.initState();
-    controller = TextEditingController();
+    //myController = TextEditingController();
     controller.addListener(() {
       final isButtonActive = controller.text.isNotEmpty;
+      const HitTestBehavior behaviorr = HitTestBehavior.translucent;
 
-      setState(() => this.isButtonActive = isButtonActive);
+      setState(() =>
+      this.isButtonActive = isButtonActive );
     });
   }
 
   void dispose() {
-    // Clean up the controller when the widget is disposed.
-    //myController.dispose();
     controller.dispose();
+    //myController.dispose();
     super.dispose();
+  }
+
+  void ShowAlert(String text) {
+    showDialog<String>(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+          title: Text(text,
+              style: TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0 , color: Color(0xFF594690), fontWeight: FontWeight.bold)),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                primary: Colors.white,
+                textStyle:
+                const TextStyle(fontFamily: 'Source Code Pro', fontSize: 20),
+                backgroundColor: Colors.deepPurple[150],
+                //backgroundColor: Color(0xFF594690)
+              ),
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK', style: TextStyle(fontFamily: 'Source Code Pro', fontSize: 30)),
+            ),
+          ],
+          elevation: 24.0,
+          //backgroundColor: Colors.deepPurple[400],
+          //backgroundColor: Color(0xFF5F6A69),
+          backgroundColor: Color(0xFFF8EBFF),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0))
+
+      ),
+    );
   }
 
 
@@ -124,9 +156,10 @@ class _NicknameState extends State<Nickname> {
                             },
                             style: ElevatedButton.styleFrom(
                               elevation: 5.0,
-                              primary: Color(0xFF5F6A69),
+                              primary: Color(0x63000000),
+                              shadowColor: Color(0xFF020000),
                               onPrimary: Colors.white,
-                              shadowColor: Colors.grey,
+                              //shadowColor: Colors.grey,
                               //shape: CircleBorder(),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50.0)),
@@ -165,8 +198,10 @@ class _NicknameState extends State<Nickname> {
                                                         widget.numberOfStacks,
                                                         widget.index + 1,
                                                         widget.PlayerList)));
-                                      } else if (widget.index + 1 ==
+                                      }
+                                      else if (widget.index + 1 ==
                                           widget.numberOfPlayers) {
+
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: (context) => new Rules(
@@ -174,13 +209,16 @@ class _NicknameState extends State<Nickname> {
                                                     widget.numberOfStacks,
                                                     widget.PlayerList)));
                                       }
+
                                     });
                                   }
                                 : null,
+
+
                             // onPressed: () {
                             //   setState(() {
-                            //     //String name = myController.text;
-                            //     String name = controller.text;
+                            //     String name = myController.text;
+                            //
                             //     if(name.isEmpty){
                             //       ShowAlert("Please enter a name!");
                             //     }
@@ -207,12 +245,16 @@ class _NicknameState extends State<Nickname> {
                             //     }
                             //   });
                             // },
+
+
+
                             style: ElevatedButton.styleFrom(
                               elevation: 5.0,
-                              primary: Color(0xFF5F6A69),
+                              primary: Color(0x63000000),
+                              shadowColor: Color(0xFF020000),
                               //padding: EdgeInsets.all(10),
                               onPrimary: Colors.white,
-                              shadowColor: Colors.grey,
+                              //shadowColor: Colors.grey,
                               // shape: CircleBorder(),
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50.0)),

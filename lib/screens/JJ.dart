@@ -48,7 +48,8 @@ class _JJState extends State<JJ> {
                           color: Colors.white,
 
                       fontFamily: 'Source Code Pro',
-                      fontSize: 22.0)),
+                      fontSize: 22.0,
+                      fontWeight: FontWeight.bold)),
                   Container(
                     width: 30,
                     alignment: Alignment.center,
@@ -56,7 +57,8 @@ class _JJState extends State<JJ> {
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'Source Code Pro',
-                            fontSize: 22.0)),
+                            fontSize: 22.0,
+                            fontWeight: FontWeight.bold)),
                   ),
                   SizedBox(width:5),
                   Row(
@@ -100,7 +102,8 @@ class _JJState extends State<JJ> {
                     style: TextStyle(
                         color: Colors.white,
                         fontFamily: 'Source Code Pro',
-                        fontSize: 23.0)),
+                        fontSize: 23.0,
+                        fontWeight: FontWeight.bold)),
                 // Text(numberOfPlayers.toString(),
                 //     style: TextStyle(
                 //         fontFamily: 'Source Code Pro',
@@ -114,7 +117,6 @@ class _JJState extends State<JJ> {
                     print(selectedButton),
                   },
 
-
                       //print('$index button is selected'),
                   buttons: ["1", "2", "3", "4"],
                   selectedButton: 0,
@@ -124,8 +126,8 @@ class _JJState extends State<JJ> {
                     color: Colors.white,
                   ),
                     borderRadius: BorderRadius.circular(20.0),
-                    unselectedColor: Color(0xFF5F6A69),
-                  selectedColor: Colors.deepPurple[300],
+                    unselectedColor: Color(0xDA181818),
+                  selectedColor: Color(0xFD34363A),
                   buttonHeight: 40.0,
                 ),
 
@@ -149,7 +151,8 @@ class _JJState extends State<JJ> {
                 style: ElevatedButton.styleFrom(
                   elevation: 5.0,
                   //primary: Color(0xC8594690), 0xFF5F6A69
-                  primary: Color(0xFF5F6A69),
+                  primary: Color(0x63000000),
+                  shadowColor: Color(0xFF020000),
                   onPrimary: Colors.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0)

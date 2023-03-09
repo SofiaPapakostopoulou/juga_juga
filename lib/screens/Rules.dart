@@ -19,7 +19,7 @@ class _RulesState extends State<Rules> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          height: 700,
+          height: 800,
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
@@ -39,7 +39,6 @@ class _RulesState extends State<Rules> {
                 SizedBox(height: 7),
                 SizedBox(
                   width: double.infinity,
-                  //height: 50,
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
@@ -48,11 +47,12 @@ class _RulesState extends State<Rules> {
                     },
                     style: ElevatedButton.styleFrom(
                       elevation: 5.0,
-                      primary: Color(0xFF5F6A69),
+                      primary: Color(0xDA181818),
                       onPrimary: Colors.white,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50.0)
                       ),
+                      minimumSize: Size(0, 40)
                     ),
                     child: Text(AppLocalizations.of(context)!.rules_button,
                         style: TextStyle(
@@ -66,8 +66,9 @@ class _RulesState extends State<Rules> {
               ],
             ),
           ),
-          margin: EdgeInsets.only(left: 20, top: 70, right: 20, bottom: 70),
-          padding: EdgeInsets.all(10.0),
+          margin: EdgeInsets.only(left: 20, top: 70, right: 20, bottom: 50),
+          //padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.only(left: 10,top: 10,right: 10,bottom: 15),
           decoration: BoxDecoration(
               color: Color(0xFF594690),
               borderRadius: BorderRadius.circular(20.0),

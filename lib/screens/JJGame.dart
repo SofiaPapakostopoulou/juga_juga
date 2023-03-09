@@ -18,7 +18,7 @@ import 'package:swipable_stack/swipable_stack.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/scheduler.dart';
-import'dart:io' show Platform;
+import 'dart:io' show Platform;
 
 const _images = [
   'playing_cards/ace_of_clubs.png',
@@ -138,28 +138,35 @@ class _JJGameState extends State<JJGame> {
 
   void ShowAlert(String text) {
     showDialog<String>(
+      barrierDismissible: false,
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text(text,
-            style: TextStyle(fontFamily: 'Source Code Pro', fontSize: 20.0)),
-        actions: <Widget>[
-          TextButton(
-            style: TextButton.styleFrom(
-              primary: Colors.white,
-              textStyle:
-                  const TextStyle(fontFamily: 'Source Code Pro', fontSize: 20),
-              backgroundColor: Colors.deepPurple[150],
+          title: Text(text,
+              style: TextStyle(
+                  fontFamily: 'Source Code Pro',
+                  fontSize: 20.0,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold)),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                primary: Colors.white,
+                textStyle: const TextStyle(
+                    fontFamily: 'Source Code Pro', fontSize: 20),
+                backgroundColor: Colors.deepPurple[150],
+                //backgroundColor: Color(0xFF594690)
+              ),
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK',
+                  style:
+                      TextStyle(fontFamily: 'Source Code Pro', fontSize: 30)),
             ),
-            onPressed: () => Navigator.pop(context, 'OK'),
-            child: const Text('OK', style: TextStyle(fontFamily: 'Source Code Pro', fontSize: 30)),
-          ),
-        ],
-        elevation: 24.0,
-        //backgroundColor: Colors.deepPurple[400],
-          backgroundColor: Color(0xFF5F6A69),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0))
-
-      ),
+          ],
+          elevation: 24.0,
+          backgroundColor: Colors.deepPurple[400],
+          //backgroundColor: Color(0xFF603CA4),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(50.0))),
     );
   }
 
@@ -169,21 +176,38 @@ class _JJGameState extends State<JJGame> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(height: 60.0),
+          SizedBox(height: 40),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                height: 30.0,
+                child: Container(
+                  padding: EdgeInsets.only(right:10),
+                  child: IconButton(
+                    icon: Icon(CupertinoIcons.book, size: 35),
+                    onPressed: () {
+                      ShowAlert(AppLocalizations.of(context)!.swipe_guide);
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
           Text(widget.PlayerList[indexer].name + ',',
-              style: TextStyle(fontFamily: 'Source Code Pro', fontSize: 40.0)),
+              style: TextStyle(fontFamily: 'Source Code Pro', fontSize: 40.0, fontWeight: FontWeight.bold)),
           Wrap(
             alignment: WrapAlignment.center,
             children: [
               Text(AppLocalizations.of(context)!.black + ", ",
                   style:
-                      TextStyle(fontFamily: 'Source Code Pro', fontSize: 35.0)),
+                      TextStyle(fontFamily: 'Source Code Pro', fontSize: 35.0, fontWeight: FontWeight.bold)),
               Text(AppLocalizations.of(context)!.red + ",",
                   style:
-                      TextStyle(fontFamily: 'Source Code Pro', fontSize: 35.0)),
+                      TextStyle(fontFamily: 'Source Code Pro', fontSize: 35.0, fontWeight: FontWeight.bold)),
               Text(AppLocalizations.of(context)!.or_orange,
                   style:
-                      TextStyle(fontFamily: 'Source Code Pro', fontSize: 35.0)),
+                      TextStyle(fontFamily: 'Source Code Pro', fontSize: 35.0, fontWeight: FontWeight.bold)),
             ],
           ),
 
@@ -211,6 +235,7 @@ class _JJGameState extends State<JJGame> {
                   stackClipBehaviour: Clip.none,
                   onSwipeCompleted: (index, direction) {
                     print(lista[man_index]);
+                    //shot_count = 0;
 
                     flagisimo = true;
 
@@ -407,29 +432,32 @@ class _JJGameState extends State<JJGame> {
                         }
 
                         showDialog<String>(
+                          barrierDismissible: false,
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            title: Text(FinalAlert,
-                                style: TextStyle(
-                                    fontFamily: 'Source Code Pro',
-                                    fontSize: 20.0)),
-                            actions: <Widget>[
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  primary: Colors.white,
-                                  textStyle: const TextStyle(
+                              title: Text(FinalAlert,
+                                  style: TextStyle(
                                       fontFamily: 'Source Code Pro',
-                                      fontSize: 20),
-                                  backgroundColor: Colors.deepPurple[150],
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.bold)),
+                              actions: <Widget>[
+                                TextButton(
+                                  style: TextButton.styleFrom(
+                                    primary: Colors.white,
+                                    textStyle: const TextStyle(
+                                        fontFamily: 'Source Code Pro',
+                                        fontSize: 20),
+                                    backgroundColor: Colors.deepPurple[150],
+                                  ),
+                                  onPressed: () => Navigator.pop(context, 'OK'),
+                                  child: const Text('OK',
+                                      style: TextStyle(fontSize: 30)),
                                 ),
-                                onPressed: () => Navigator.pop(context, 'OK'),
-                                child: const Text('OK',style: TextStyle(fontSize: 30)),
-                              ),
-                            ],
-                            elevation: 24.0,
-                            backgroundColor: Colors.deepPurple[400],
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0))
-                          ),
+                              ],
+                              elevation: 24.0,
+                              backgroundColor: Colors.deepPurple[400],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0))),
                         );
                       }
 
@@ -448,12 +476,11 @@ class _JJGameState extends State<JJGame> {
                       end_shot = shotCounter;
                       shotCounter = 0;
                       print("man_index $man_index");
-                    }
-                    else if (direction == SwipeDirection.right) {
+                    } else if (direction == SwipeDirection.right) {
                       shotCounter++;
+                      end_shot = shotCounter;
                       man_index++;
-                    }
-                    else if (direction == SwipeDirection.up) {
+                    } else if (direction == SwipeDirection.up) {
                       int cardA = lista[man_index];
                       int cardB = lista[man_index + 1];
                       showGeneralDialog(
@@ -480,6 +507,7 @@ class _JJGameState extends State<JJGame> {
                                     flagisimo = true;
                                     if (directionn == SwipeDirection.left) {
                                       shot_count = shotCounter + 2;
+                                      end_shot = shotCounter;
                                       //print(flag);
 
                                       String PlayerName = widget
@@ -728,6 +756,7 @@ class _JJGameState extends State<JJGame> {
                                         }
 
                                         showDialog<String>(
+                                          barrierDismissible: false,
                                           context: context,
                                           builder: (BuildContext context) =>
                                               AlertDialog(
@@ -735,7 +764,9 @@ class _JJGameState extends State<JJGame> {
                                                 style: TextStyle(
                                                     fontFamily:
                                                         'Source Code Pro',
-                                                    fontSize: 20.0)),
+                                                    fontSize: 20.0,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
                                             actions: <Widget>[
                                               TextButton(
                                                 style: TextButton.styleFrom(
@@ -743,7 +774,9 @@ class _JJGameState extends State<JJGame> {
                                                   textStyle: const TextStyle(
                                                       fontFamily:
                                                           'Source Code Pro',
-                                                      fontSize: 20),
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold),
                                                   backgroundColor:
                                                       Colors.deepPurple[150],
                                                 ),
@@ -773,14 +806,16 @@ class _JJGameState extends State<JJGame> {
                                         indexer = 0;
                                       }
                                       shotCounter = 0;
+                                      end_shot = shotCounter;
                                       man_index++;
                                       //SwipableStackController().currentIndex= index+2;
                                       //indexx = indexx+2;
                                       print("μαν_index $man_index");
-                                    }
-                                    else if(directionn == SwipeDirection.right){
+                                    } else if (directionn ==
+                                        SwipeDirection.right) {
                                       shotCounter = shotCounter + 2;
-                                      man_index = man_index+2;
+                                      end_shot = shotCounter;
+                                      man_index = man_index + 2;
                                       print(shotCounter);
                                       Navigator.pop(context);
                                     }
@@ -822,169 +857,217 @@ class _JJGameState extends State<JJGame> {
 
                     String PlayerName =
                         widget.PlayerList[widget.numberOfPlayers - 1].name;
-                    int Shots = end_shot;
+                    int Shotssss = end_shot;
+                    //int Shots = shot_count;
                     man_index++;
 
-                    if (man_index >= (widget.numberOfStacks) * 51) { //51
-                      if (Shots > 0) {
+                    if (man_index >= (widget.numberOfStacks) * 51) {
+                      //51
+                      if (Shotssss > 0) {
                         showDialog<String>(
                           barrierDismissible: false,
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            title: Text(
-                                AppLocalizations.of(context)!.final_alert1 +
-                                    PlayerName +
-                                    AppLocalizations.of(context)!.share +
-                                    Shots.toString() +
-                                    " " +
-                                    AppLocalizations.of(context)!.shot_s +
-                                    AppLocalizations.of(context)!.share2 +
-                                    AppLocalizations.of(context)!.final_alert2,
-                                style: TextStyle(
-                                    fontFamily: 'Source Code Pro',
-                                    fontSize: 20.0)),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) => new JJGame(
-                                            widget.numberOfPlayers,
-                                            widget.numberOfStacks,
-                                            widget.PlayerList))),
-                                child: Text(AppLocalizations.of(context)!.yes,
-                                    style: TextStyle(
-                                        fontFamily: 'Source Code Pro',
-                                        fontSize: 20.0,
-                                        color: Colors.white)),
-                              ),
-                              TextButton(
-                                onPressed: () => {
-                                  showDialog<String>(
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        AlertDialog(
-                                          title: Text(
-                                              AppLocalizations.of(context)!
-                                                  .sure,
-                                              style: TextStyle(
-                                                  fontFamily: 'Source Code Pro',
-                                                  fontSize: 20.0)),
-                                          actions: <Widget>[
-                                            TextButton(
-                                              onPressed: () => {
-                                                if(Platform.isAndroid){
-                                                  SystemNavigator.pop()
-                                                }
-                                              },
-                                              child: Text(
+                              title: Text(
+                                  AppLocalizations.of(context)!.final_alert1 +
+                                      "\n" +
+                                      PlayerName +
+                                      AppLocalizations.of(context)!.share +
+                                      Shotssss.toString() +
+                                      " " +
+                                      AppLocalizations.of(context)!.shot_s +
+                                      AppLocalizations.of(context)!.share2 +
+                                      "\n" +
+                                      AppLocalizations.of(context)!
+                                          .final_alert2,
+                                  style: TextStyle(
+                                      fontFamily: 'Source Code Pro',
+                                      fontSize: 20.0)),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) => new JJGame(
+                                              widget.numberOfPlayers,
+                                              widget.numberOfStacks,
+                                              widget.PlayerList))),
+                                  child: Text(AppLocalizations.of(context)!.yes,
+                                      style: TextStyle(
+                                          fontFamily: 'Source Code Pro',
+                                          fontSize: 20.0,
+                                          color: Colors.white)),
+                                ),
+                                TextButton(
+                                  onPressed: () => {
+                                    showDialog<String>(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                              title: Text(
                                                   AppLocalizations.of(context)!
-                                                      .yes),
-                                            ),
-
-                                          ],
-                                          elevation: 24.0,
-                                          backgroundColor: Colors.deepPurple[400],
-                                        ),
-                                  )
-                                },
-                                child: Text(AppLocalizations.of(context)!.no,
-                                    style: TextStyle(
-                                        fontFamily: 'Source Code Pro',
-                                        fontSize: 20.0,
-                                        color: Colors.white)),
-                              ),
-                            ],
-                            elevation: 24.0,
-                            backgroundColor: Colors.deepPurple[400],
-                          ),
+                                                      .sure,
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          'Source Code Pro',
+                                                      fontSize: 20.0)),
+                                              actions: <Widget>[
+                                                TextButton(
+                                                  onPressed: () => {
+                                                    if (Platform.isAndroid)
+                                                      {SystemNavigator.pop()}
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .yes,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontFamily:
+                                                              'Source Code Pro',
+                                                          fontSize: 20.0)),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () => Navigator.of(
+                                                          context)
+                                                      .push(MaterialPageRoute(
+                                                          builder: (context) => new JJGame(
+                                                              widget
+                                                                  .numberOfPlayers,
+                                                              widget
+                                                                  .numberOfStacks,
+                                                              widget
+                                                                  .PlayerList))),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .no,
+                                                      style: TextStyle(
+                                                          color: Colors.white,
+                                                          fontFamily:
+                                                              'Source Code Pro',
+                                                          fontSize: 20.0)),
+                                                ),
+                                              ],
+                                              elevation: 24.0,
+                                              backgroundColor:
+                                                  Colors.deepPurple[400],
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0))),
+                                    )
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.no,
+                                      style: TextStyle(
+                                          fontFamily: 'Source Code Pro',
+                                          fontSize: 20.0,
+                                          color: Colors.white)),
+                                ),
+                              ],
+                              elevation: 24.0,
+                              backgroundColor: Colors.deepPurple[400],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0))),
                         );
-                      } else if (Shots == 0) {
+                      } else if (Shotssss == 0) {
                         showDialog<String>(
                           barrierDismissible: false,
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            title: Text(
-                                AppLocalizations.of(context)!.final_alert1 +
-                                    AppLocalizations.of(context)!.final_alert2,
-                                style: TextStyle(
-                                    fontFamily: 'Source Code Pro',
-                                    fontSize: 20.0)),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () => Navigator.of(context).push(
-                                    MaterialPageRoute(
-                                        builder: (context) => new JJGame(
-                                            widget.numberOfPlayers,
-                                            widget.numberOfStacks,
-                                            widget.PlayerList))),
-                                child: Text(AppLocalizations.of(context)!.yes,
-                                    style: TextStyle(
-                                        fontFamily: 'Source Code Pro',
-                                        fontSize: 25.0,
-                                    color: Colors.white)),
-                              ),
-                              TextButton(
-                                onPressed: () => {
-                                  showDialog<String>(
-                                    barrierDismissible: false,
-                                    context: context,
-                                    builder: (BuildContext context) =>
-                                        AlertDialog(
-                                      title: Text(
-                                          AppLocalizations.of(context)!
-                                                  .sure,
-                                          style: TextStyle(
-                                              fontFamily: 'Source Code Pro',
-                                              fontSize: 20.0)),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          onPressed: () => {
-                                            if(Platform.isAndroid){
-                                              SystemNavigator.pop()
-                                            }
-                                          },
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .yes,
-                                              style: TextStyle(
-                                                  fontFamily: 'Source Code Pro',
-                                                  fontSize: 25.0,
-                                                  color: Colors.white)),
-                                        ),
-                                        TextButton(
-                                          onPressed: () => Navigator.of(context).push(
-                                              MaterialPageRoute(
-                                                  builder: (context) => new JJGame(
-                                                      widget.numberOfPlayers,
-                                                      widget.numberOfStacks,
-                                                      widget.PlayerList))),
-                                          child: Text(
-                                              AppLocalizations.of(context)!
-                                                  .no,
-                                              style: TextStyle(
-                                                  fontFamily: 'Source Code Pro',
-                                                  fontSize: 25.0,
-                                                  color: Colors.white)),
-                                        ),
-
-                                      ],
-                                      elevation: 24.0,
-                                      backgroundColor: Colors.deepPurple[400],
-                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0))
-                                    ),
-                                  )
-                                },
-                                child: Text(AppLocalizations.of(context)!.no,
-                                    style: TextStyle(
-                                        fontFamily: 'Source Code Pro',
-                                        fontSize: 25.0,
-                                        color: Colors.white)),
-                              ),
-                            ],
-                            elevation: 24.0,
-                            backgroundColor: Colors.deepPurple[400],
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0))
-                          ),
+                              title: Text(
+                                  AppLocalizations.of(context)!.final_alert1 +
+                                      AppLocalizations.of(context)!
+                                          .final_alert2,
+                                  style: TextStyle(
+                                      fontFamily: 'Source Code Pro',
+                                      fontSize: 20.0)),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () => Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) => new JJGame(
+                                              widget.numberOfPlayers,
+                                              widget.numberOfStacks,
+                                              widget.PlayerList))),
+                                  child: Text(AppLocalizations.of(context)!.yes,
+                                      style: TextStyle(
+                                          fontFamily: 'Source Code Pro',
+                                          fontSize: 25.0,
+                                          color: Colors.white)),
+                                ),
+                                TextButton(
+                                  onPressed: () => {
+                                    showDialog<String>(
+                                      barrierDismissible: false,
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          AlertDialog(
+                                              title: Text(
+                                                  AppLocalizations.of(context)!
+                                                      .sure,
+                                                  style: TextStyle(
+                                                      fontFamily:
+                                                          'Source Code Pro',
+                                                      fontSize: 20.0)),
+                                              actions: <Widget>[
+                                                TextButton(
+                                                  onPressed: () => {
+                                                    if (Platform.isAndroid)
+                                                      {SystemNavigator.pop()}
+                                                  },
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .yes,
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              'Source Code Pro',
+                                                          fontSize: 25.0,
+                                                          color: Colors.white)),
+                                                ),
+                                                TextButton(
+                                                  onPressed: () => Navigator.of(
+                                                          context)
+                                                      .push(MaterialPageRoute(
+                                                          builder: (context) => new JJGame(
+                                                              widget
+                                                                  .numberOfPlayers,
+                                                              widget
+                                                                  .numberOfStacks,
+                                                              widget
+                                                                  .PlayerList))),
+                                                  child: Text(
+                                                      AppLocalizations.of(
+                                                              context)!
+                                                          .no,
+                                                      style: TextStyle(
+                                                          fontFamily:
+                                                              'Source Code Pro',
+                                                          fontSize: 25.0,
+                                                          color: Colors.white)),
+                                                ),
+                                              ],
+                                              elevation: 24.0,
+                                              backgroundColor:
+                                                  Colors.deepPurple[400],
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0))),
+                                    )
+                                  },
+                                  child: Text(AppLocalizations.of(context)!.no,
+                                      style: TextStyle(
+                                          fontFamily: 'Source Code Pro',
+                                          fontSize: 25.0,
+                                          color: Colors.white)),
+                                ),
+                              ],
+                              elevation: 24.0,
+                              backgroundColor: Colors.deepPurple[400],
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0))),
                         );
                       }
                     }
