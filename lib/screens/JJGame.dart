@@ -211,8 +211,13 @@ class _JJGameState extends State<JJGame> {
             ],
           ),
 
-          SizedBox(height: 50),
+          //SizedBox(height: 50),
+
           Expanded(
+              flex: 1,
+              child: Container()),
+          Expanded(
+            flex: 10,
             child: Stack(
               children: [
                 SwipableStack(
@@ -861,7 +866,7 @@ class _JJGameState extends State<JJGame> {
                     //int Shots = shot_count;
                     man_index++;
 
-                    if (man_index >= (widget.numberOfStacks) * 51) {
+                    if (man_index >= (widget.numberOfStacks) * 50) {
                       //51
                       if (Shotssss > 0) {
                         showDialog<String>(
@@ -1129,7 +1134,7 @@ class _JJGameState extends State<JJGame> {
               ],
             ),
           ),
-          //SizedBox(height: 5.0)
+          //SizedBox(height: 30)
         ],
       ),
     );

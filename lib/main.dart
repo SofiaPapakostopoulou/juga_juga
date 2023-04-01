@@ -28,6 +28,9 @@ class JugaJuga extends StatelessWidget {
       supportedLocales: [
         Locale('en', ''), // English, no country code
         Locale('el', ''), // Greek, no country code
+        Locale('es', ''),
+        Locale('ca', ''),
+        Locale('fr', '')
       ],
       initialRoute: '/',
       routes: {
