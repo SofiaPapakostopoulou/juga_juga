@@ -26,11 +26,11 @@ class JugaJuga extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: [
-        Locale('en', ''), // English, no country code
-        Locale('el', ''), // Greek, no country code
-        Locale('es', ''),
-        Locale('ca', ''),
-        Locale('fr', '')
+        Locale('en', ''), // English
+        Locale('el', ''), // Greek
+        Locale('es', ''), // Spanish
+        Locale('ca', ''), // Catalan
+        Locale('fr', '')  // French
       ],
       initialRoute: '/',
       routes: {

@@ -484,8 +484,9 @@ class _JJGameState extends State<JJGame> {
                     } else if (direction == SwipeDirection.right) {
                       shotCounter++;
                       end_shot = shotCounter;
-                      man_index++;
-                    } else if (direction == SwipeDirection.up) {
+                      //man_index++;
+                    }
+                    else if (direction == SwipeDirection.up) {
                       int cardA = lista[man_index];
                       int cardB = lista[man_index + 1];
                       showGeneralDialog(
@@ -510,7 +511,7 @@ class _JJGameState extends State<JJGame> {
                                   stackClipBehaviour: Clip.none,
                                   onSwipeCompleted: (indexx, directionn) {
                                     flagisimo = true;
-                                    if (directionn == SwipeDirection.left) {
+                                    if (directionn == SwipeDirection.left){
                                       shot_count = shotCounter + 2;
                                       end_shot = shotCounter;
                                       //print(flag);
@@ -793,6 +794,10 @@ class _JJGameState extends State<JJGame> {
                                             elevation: 24.0,
                                             backgroundColor:
                                                 Colors.deepPurple[400],
+                                                  shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0))
                                           ),
                                         );
                                       }
@@ -864,7 +869,9 @@ class _JJGameState extends State<JJGame> {
                         widget.PlayerList[widget.numberOfPlayers - 1].name;
                     int Shotssss = end_shot;
                     //int Shots = shot_count;
+
                     man_index++;
+                    print("man_index--->$man_index");
 
                     if (man_index >= (widget.numberOfStacks) * 50) {
                       //51
@@ -975,7 +982,8 @@ class _JJGameState extends State<JJGame> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50.0))),
                         );
-                      } else if (Shotssss == 0) {
+                      }
+                      else if (Shotssss == 0) {
                         showDialog<String>(
                           barrierDismissible: false,
                           context: context,
