@@ -12,7 +12,7 @@ import 'package:juga_juga/screens/Nickname.dart';
 import 'package:juga_juga/screens/Rules.dart';
 import 'package:juga_juga/components/Player.dart';
 import 'package:juga_juga/screens/JJNicknames.dart';
-//
+
 class JJ extends StatefulWidget {
   @override
   _JJState createState() => _JJState();
