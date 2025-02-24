@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:io';
 
 import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/cupertino.dart';
@@ -257,14 +258,15 @@ class _JJGameState extends State<JJGame> {
                             AppLocalizations.of(context)!.choose_player +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shot + ".",
+
                         PlayerName +
                             ", " +
                             AppLocalizations.of(context)!.youDrink +
                             " " +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shot + ".",
                       ];
                       List<String> alerts2 = [
                         PlayerName +
@@ -273,60 +275,60 @@ class _JJGameState extends State<JJGame> {
                             " " +
                             (Shots ~/ 2).toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s +
+                            AppLocalizations.of(context)!.shot +
                             AppLocalizations.of(context)!.player_right +
                             (Shots ~/ 2).toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shot + ".",
                         PlayerName +
                             ", " +
                             AppLocalizations.of(context)!.youDrink +
                             " " +
                             (Shots ~/ 2).toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s +
+                            AppLocalizations.of(context)!.shot +
                             AppLocalizations.of(context)!.player_left +
                             (Shots ~/ 2).toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shot + ".",
                         PlayerName +
                             AppLocalizations.of(context)!.choose_player +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shots + ".",
                         PlayerName +
                             ", " +
                             AppLocalizations.of(context)!.youDrink +
                             " " +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shots + ".",
                         PlayerName +
                             AppLocalizations.of(context)!.share +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s +
-                            AppLocalizations.of(context)!.share2
+                            AppLocalizations.of(context)!.shots +
+                            AppLocalizations.of(context)!.share2 + "."
                       ];
                       List<String> alerts3 = [
                         PlayerName +
                             AppLocalizations.of(context)!.choose_player +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shots + ".",
                         PlayerName +
                             ", " +
                             AppLocalizations.of(context)!.youDrink +
                             " " +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s,
+                            AppLocalizations.of(context)!.shots + ".",
                         PlayerName +
                             AppLocalizations.of(context)!.share +
                             Shots.toString() +
                             " " +
-                            AppLocalizations.of(context)!.shot_s +
-                            AppLocalizations.of(context)!.share2
+                            AppLocalizations.of(context)!.shots +
+                            AppLocalizations.of(context)!.share2 + "."
                       ];
 
                       if (flag) {
@@ -352,14 +354,14 @@ class _JJGameState extends State<JJGame> {
                               AppLocalizations.of(context)!.choose_player +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shot + ".",
                           PlayerName +
                               ", " +
                               AppLocalizations.of(context)!.youDrink +
                               " " +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shot + ".",
                         ];
                         List<String> alerts5 = [
                           PlayerName +
@@ -368,60 +370,60 @@ class _JJGameState extends State<JJGame> {
                               " " +
                               (Shots ~/ 2).toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s +
+                              AppLocalizations.of(context)!.shot +
                               AppLocalizations.of(context)!.player_right +
                               (Shots ~/ 2).toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shot + ".",
                           PlayerName +
                               ", " +
                               AppLocalizations.of(context)!.youDrink +
                               " " +
                               (Shots ~/ 2).toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s +
+                              AppLocalizations.of(context)!.shot +
                               AppLocalizations.of(context)!.player_left +
                               (Shots ~/ 2).toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shot + ".",
                           PlayerName +
                               AppLocalizations.of(context)!.choose_player +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shots + ".",
                           PlayerName +
                               ", " +
                               AppLocalizations.of(context)!.youDrink +
                               " " +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shots + ".",
                           PlayerName +
                               AppLocalizations.of(context)!.share +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s +
-                              AppLocalizations.of(context)!.share2
+                              AppLocalizations.of(context)!.shots +
+                              AppLocalizations.of(context)!.share2 + "."
                         ];
                         List<String> alerts6 = [
                           PlayerName +
                               AppLocalizations.of(context)!.choose_player +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shots + ".",
                           PlayerName +
                               ", " +
                               AppLocalizations.of(context)!.youDrink +
                               " " +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s,
+                              AppLocalizations.of(context)!.shots + ".",
                           PlayerName +
                               AppLocalizations.of(context)!.share +
                               Shots.toString() +
                               " " +
-                              AppLocalizations.of(context)!.shot_s +
-                              AppLocalizations.of(context)!.share2
+                              AppLocalizations.of(context)!.shots +
+                              AppLocalizations.of(context)!.share2 + "."
                         ];
 
                         String FinalAlert;
@@ -486,7 +488,7 @@ class _JJGameState extends State<JJGame> {
                       end_shot = shotCounter;
                       //man_index++;
                     }
-                    else if (direction == SwipeDirection.up) {
+                    else if (direction == SwipeDirection.up && man_index+2<=51) {
                       int cardA = lista[man_index];
                       int cardB = lista[man_index + 1];
                       showGeneralDialog(
@@ -529,7 +531,7 @@ class _JJGameState extends State<JJGame> {
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shot + ".",
                                         PlayerName +
                                             ", " +
                                             AppLocalizations.of(context)!
@@ -538,7 +540,7 @@ class _JJGameState extends State<JJGame> {
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shot + ".",
                                       ];
                                       List<String> alerts2 = [
                                         PlayerName +
@@ -549,13 +551,13 @@ class _JJGameState extends State<JJGame> {
                                             (Shots ~/ 2).toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s +
+                                                .shot +
                                             AppLocalizations.of(context)!
                                                 .player_right +
                                             (Shots ~/ 2).toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shot + ".",
                                         PlayerName +
                                             ", " +
                                             AppLocalizations.of(context)!
@@ -564,20 +566,20 @@ class _JJGameState extends State<JJGame> {
                                             (Shots ~/ 2).toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s +
+                                                .shot +
                                             AppLocalizations.of(context)!
                                                 .player_left +
                                             (Shots ~/ 2).toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shot + ".",
                                         PlayerName +
                                             AppLocalizations.of(context)!
                                                 .choose_player +
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shots + ".",
                                         PlayerName +
                                             ", " +
                                             AppLocalizations.of(context)!
@@ -586,15 +588,15 @@ class _JJGameState extends State<JJGame> {
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shots + ".",
                                         PlayerName +
                                             AppLocalizations.of(context)!
                                                 .share +
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s +
-                                            AppLocalizations.of(context)!.share2
+                                                .shots +
+                                            AppLocalizations.of(context)!.share2 + "."
                                       ];
                                       List<String> alerts3 = [
                                         PlayerName +
@@ -603,7 +605,7 @@ class _JJGameState extends State<JJGame> {
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shots + ".",
                                         PlayerName +
                                             ", " +
                                             AppLocalizations.of(context)!
@@ -612,16 +614,17 @@ class _JJGameState extends State<JJGame> {
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s,
+                                                .shots + ".",
                                         PlayerName +
                                             AppLocalizations.of(context)!
                                                 .share +
                                             Shots.toString() +
                                             " " +
                                             AppLocalizations.of(context)!
-                                                .shot_s +
-                                            AppLocalizations.of(context)!.share2
+                                                .shots +
+                                            AppLocalizations.of(context)!.share2 + "."
                                       ];
+
 
                                       Navigator.pop(context);
 
@@ -652,7 +655,7 @@ class _JJGameState extends State<JJGame> {
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shot + ".",
                                           PlayerName +
                                               ", " +
                                               AppLocalizations.of(context)!
@@ -661,7 +664,7 @@ class _JJGameState extends State<JJGame> {
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shot + ".",
                                         ];
                                         List<String> alerts5 = [
                                           PlayerName +
@@ -672,13 +675,13 @@ class _JJGameState extends State<JJGame> {
                                               (Shots ~/ 2).toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s +
+                                                  .shot +
                                               AppLocalizations.of(context)!
                                                   .player_right +
                                               (Shots ~/ 2).toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shot + ".",
                                           PlayerName +
                                               ", " +
                                               AppLocalizations.of(context)!
@@ -687,20 +690,20 @@ class _JJGameState extends State<JJGame> {
                                               (Shots ~/ 2).toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s +
+                                                  .shots +
                                               AppLocalizations.of(context)!
                                                   .player_left +
                                               (Shots ~/ 2).toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shots + ".",
                                           PlayerName +
                                               AppLocalizations.of(context)!
                                                   .choose_player +
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shots + ".",
                                           PlayerName +
                                               ", " +
                                               AppLocalizations.of(context)!
@@ -709,16 +712,16 @@ class _JJGameState extends State<JJGame> {
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shots + ".",
                                           PlayerName +
                                               AppLocalizations.of(context)!
                                                   .share +
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s +
+                                                  .shots +
                                               AppLocalizations.of(context)!
-                                                  .share2
+                                                  .share2 + "."
                                         ];
                                         List<String> alerts6 = [
                                           PlayerName +
@@ -727,7 +730,7 @@ class _JJGameState extends State<JJGame> {
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shots + ".",
                                           PlayerName +
                                               ", " +
                                               AppLocalizations.of(context)!
@@ -736,16 +739,16 @@ class _JJGameState extends State<JJGame> {
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s,
+                                                  .shots + ".",
                                           PlayerName +
                                               AppLocalizations.of(context)!
                                                   .share +
                                               Shots.toString() +
                                               " " +
                                               AppLocalizations.of(context)!
-                                                  .shot_s +
+                                                  .shots +
                                               AppLocalizations.of(context)!
-                                                  .share2
+                                                  .share2 + "."
                                         ];
 
                                         String FinalAlert;
@@ -864,6 +867,9 @@ class _JJGameState extends State<JJGame> {
                         ),
                       );
                     }
+                    else if (direction == SwipeDirection.up && man_index+2>51){
+                      man_index = widget.numberOfStacks*50;//51
+                    }
 
                     String PlayerName =
                         widget.PlayerList[widget.numberOfPlayers - 1].name;
@@ -873,8 +879,9 @@ class _JJGameState extends State<JJGame> {
                     man_index++;
                     print("man_index--->$man_index");
 
-                    if (man_index >= (widget.numberOfStacks) * 50) {
+                    //if (man_index >= (widget.numberOfStacks) * 50) {
                       //51
+                    if (man_index >= (widget.numberOfStacks) * 2) {
                       if (Shotssss > 0) {
                         showDialog<String>(
                           barrierDismissible: false,
@@ -926,8 +933,11 @@ class _JJGameState extends State<JJGame> {
                                               actions: <Widget>[
                                                 TextButton(
                                                   onPressed: () => {
-                                                    if (Platform.isAndroid)
-                                                      {SystemNavigator.pop()}
+                                                    if (Platform.isAndroid){
+                                                      SystemNavigator.pop()}
+                                                    else{
+                                                      exit(0)
+                                                    }
                                                   },
                                                   child: Text(
                                                       AppLocalizations.of(
