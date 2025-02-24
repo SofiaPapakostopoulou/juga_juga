@@ -8,7 +8,6 @@ Juga Juga is a **Flutter-powered mobile drinking game** designed for fun and int
 
 ✅ **Card-based gameplay** with random order  
 ✅ **Intuitive UI/UX** for a seamless gaming experience
-
 ✅ **Randomized drink assignment** for engaging player interactions  
 ✅ **Cross-platform compatibility** (iOS & Android)  
 
