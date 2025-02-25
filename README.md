@@ -4,37 +4,12 @@ This project is the outcome of my **thesis**, focusing on the **design, developm
 
 ---
 
-## 📌 Project Overview  
-
-The project began with an **analysis of user needs**, defining both **functional and non-functional requirements** for the application. The key functionalities include:  
-✔ **Randomized challenge selection**  
-✔ **Round management and tracking**  
-✔ **Game completion once the virtual deck of challenges is exhausted**  
-
-The **UI/UX design** was structured through **wireframes and prototypes**, aiming to **optimize the user experience**. The development was carried out using **Flutter**, ensuring **cross-platform support** for **Android and iOS**, while the app's architecture was designed for **scalability and stability**.  
-
----
-
 ## 🚀 Technologies Used  
 
 - **Flutter** – Cross-platform mobile framework  
-- **Dart** – Programming language  
-- **Provider** – State management  
-- **Firebase** (if applicable) – Backend & authentication  
-- **Responsive UI design** for various screen sizes  
+- **Dart** – Programming language   
 
 ---
-
-## 🎯 Challenges & Solutions  
-
-During the development process, several **challenges** were encountered, including:  
-🔹 **Data management strategies** for efficient challenge selection  
-🔹 **Adapting UI to different screen sizes** for seamless gameplay  
-🔹 **Performance optimization** to ensure smooth execution  
-
-The **testing and evaluation phase** involved gathering **user feedback**, which led to various **improvements in usability, UI enhancements, and game flow optimization**.  
-
---- 
 
 ## 🎯 Game Philosophy  
 
