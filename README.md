@@ -23,7 +23,7 @@ The game is played in **a series of rounds**, with the players taking turns in a
 
 ---
 
-## 🃏 11.1 Game Setup  
+## 🃏 Game Setup  
 
 1. Players choose **how many participants** will play.  
 2. Players select **the number of decks** to be used.  
@@ -31,7 +31,7 @@ The game is played in **a series of rounds**, with the players taking turns in a
 
 ---
 
-## 🎮 11.2 Gameplay  
+## 🎮 Gameplay  
 
 ### **🔴 Guessing the Color**  
 
@@ -53,7 +53,7 @@ The game is played in **a series of rounds**, with the players taking turns in a
 
 ---
 
-## 🎉 11.3 Game Ending  
+## 🎉  Game Ending  
 
 - The game **ends when all cards in the deck have been played**.  
 
