@@ -6,12 +6,11 @@ import 'package:group_button/group_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:juga_juga/components/GameBrain.dart';
 import 'package:juga_juga/screens/JJGame.dart';
-import 'package:juga_juga/screens/JJNicknames.dart';
-import 'package:juga_juga/screens/Nickname.dart';
+import 'package:juga_juga/screens/Nicknames.dart';
+import 'package:juga_juga/screens/JJNickname.dart';
 
-import 'package:juga_juga/screens/Rules.dart';
+import 'package:juga_juga/screens/JJRules.dart';
 import 'package:juga_juga/components/Player.dart';
-import 'package:juga_juga/screens/JJNicknames.dart';
 
 class JJ extends StatefulWidget {
   @override

@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:juga_juga/components/GameBrain.dart';
 import 'package:juga_juga/components/Player.dart';
-import 'package:juga_juga/screens/JJHomePage.dart';
+import 'package:juga_juga/screens/JJIntro.dart';
 import 'package:juga_juga/components/example_card.dart';
 import 'package:juga_juga/components/card_overlay.dart';
 import 'package:juga_juga/components/card_label.dart';

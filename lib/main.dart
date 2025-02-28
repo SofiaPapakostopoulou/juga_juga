@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:juga_juga/screens/JJHomePage.dart';
-import 'package:juga_juga/screens/JJ.dart';
-import 'package:juga_juga/screens/JJWild.dart';
+import 'package:juga_juga/screens/JJIntro.dart';
+import 'package:juga_juga/screens/JJInfo.dart';
+import 'package:juga_juga/screens/Wild.dart';
 import 'package:juga_juga/screens/JJGame.dart';
 import 'package:juga_juga/screens/Settings.dart';
-import 'package:juga_juga/screens/Rules.dart';
-import 'package:juga_juga/screens/JJNicknames.dart';
-import 'package:juga_juga/screens/Nickname.dart';
+import 'package:juga_juga/screens/JJRules.dart';
+import 'package:juga_juga/screens/Nicknames.dart';
+import 'package:juga_juga/screens/JJNickname.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

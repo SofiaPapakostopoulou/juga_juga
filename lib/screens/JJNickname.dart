@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:juga_juga/components/Player.dart';
 import 'package:juga_juga/screens/JJGame.dart';
-import 'package:juga_juga/screens/Rules.dart';
+import 'package:juga_juga/screens/JJRules.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:juga_juga/components/round_icon_button.dart';
